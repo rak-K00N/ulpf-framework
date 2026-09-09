@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ULPF Unified Visibility Dashboard</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background: #f4f5f7; margin: 0; padding: 24px; color: #1a1a1a; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: #666; margin-bottom: 24px; font-size: 14px; }
+  .stat-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .stat-card { background: white; border-radius: 10px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); min-width: 140px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; }
+  .stat-card .label { font-size: 12px; color: #666; margin-top: 4px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .chart-card { background: white; border-radius: 10px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .chart-card h3 { font-size: 14px; margin: 0 0 12px 0; color: #333; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  th, td { text-align: left; padding: 8px 12px; font-size: 12px; border-bottom: 1px solid #eee; }
+  th { background: #fafafa; color: #666; text-transform: uppercase; font-size: 11px; }
+  .action-allow { color: #16a34a; font-weight: 600; }
+  .action-deny { color: #dc2626; font-weight: 600; }
+  .action-auth { color: #7c3aed; font-weight: 600; }
+  .offline-badge { display: inline-block; background: #ecfdf5; color: #16a34a; font-size: 11px; padding: 4px 10px; border-radius: 999px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+  <h1>ULPF Unified Visibility Dashboard</h1>
+  <div class="subtitle">Generated from 43,953 normalized events across all onboarded sources.</div>
+  <div class="offline-badge">&#9679; fully offline &mdash; no external scripts, no network calls</div>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="num">43,953</div><div class="label">TOTAL EVENTS</div></div>
+    <div class="stat-card"><div class="num">7,826</div><div class="label">ALLOWED</div></div>
+    <div class="stat-card"><div class="num">5,476</div><div class="label">DENIED</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="label">VENDORS SEEN</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="label">SOURCE FORMATS</div></div>
+  </div>
+
+  <div class="grid">
+    
+    <div class="chart-card">
+      <h3>Events by action</h3>
+      <svg viewBox="0 0 520 202" width="100%" height="202">
+        
+          <text x="0" y="59.0" font-size="13" fill="#333">other</text>
+          <rect x="150" y="40" width="340" height="28" fill="#3b82f6" rx="4"/>
+          <text x="498" y="59.0" font-size="13" fill="#333">30012</text>
+        
+          <text x="0" y="97.0" font-size="13" fill="#333">allow</text>
+          <rect x="150" y="78" width="88" height="28" fill="#3b82f6" rx="4"/>
+          <text x="246" y="97.0" font-size="13" fill="#333">7826</text>
+        
+          <text x="0" y="135.0" font-size="13" fill="#333">deny</text>
+          <rect x="150" y="116" width="62" height="28" fill="#3b82f6" rx="4"/>
+          <text x="220" y="135.0" font-size="13" fill="#333">5476</text>
+        
+          <text x="0" y="173.0" font-size="13" fill="#333">auth</text>
+          <rect x="150" y="154" width="7" height="28" fill="#3b82f6" rx="4"/>
+          <text x="165" y="173.0" font-size="13" fill="#333">639</text>
+        
+      </svg>
+    </div>
+    
+    <div class="chart-card">
+      <h3>Events by source format</h3>
+      <svg viewBox="0 0 520 278" width="100%" height="278">
+        
+          <text x="0" y="59.0" font-size="13" fill="#333">unknown</text>
+          <rect x="150" y="40" width="340" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="498" y="59.0" font-size="13" fill="#333">29391</text>
+        
+          <text x="0" y="97.0" font-size="13" fill="#333">kv_syslog</text>
+          <rect x="150" y="78" width="39" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="197" y="97.0" font-size="13" fill="#333">3422</text>
+        
+          <text x="0" y="135.0" font-size="13" fill="#333">coded_syslog</text>
+          <rect x="150" y="116" width="32" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="190" y="135.0" font-size="13" fill="#333">2788</text>
+        
+          <text x="0" y="173.0" font-size="13" fill="#333">csv</text>
+          <rect x="150" y="154" width="32" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="190" y="173.0" font-size="13" fill="#333">2788</text>
+        
+          <text x="0" y="211.0" font-size="13" fill="#333">json</text>
+          <rect x="150" y="192" width="32" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="190" y="211.0" font-size="13" fill="#333">2786</text>
+        
+          <text x="0" y="249.0" font-size="13" fill="#333">cef</text>
+          <rect x="150" y="230" width="32" height="28" fill="#8b5cf6" rx="4"/>
+          <text x="190" y="249.0" font-size="13" fill="#333">2778</text>
+        
+      </svg>
+    </div>
+    
+    <div class="chart-card">
+      <h3>Events by vendor</h3>
+      <svg viewBox="0 0 520 240" width="100%" height="240">
+        
+          <text x="0" y="59.0" font-size="13" fill="#333">unknown</text>
+          <rect x="150" y="40" width="340" height="28" fill="#f59e0b" rx="4"/>
+          <text x="498" y="59.0" font-size="13" fill="#333">29391</text>
+        
+          <text x="0" y="97.0" font-size="13" fill="#333">fortinet</text>
+          <rect x="150" y="78" width="71" height="28" fill="#f59e0b" rx="4"/>
+          <text x="229" y="97.0" font-size="13" fill="#333">6200</text>
+        
+          <text x="0" y="135.0" font-size="13" fill="#333">cisco</text>
+          <rect x="150" y="116" width="32" height="28" fill="#f59e0b" rx="4"/>
+          <text x="190" y="135.0" font-size="13" fill="#333">2788</text>
+        
+          <text x="0" y="173.0" font-size="13" fill="#333">generic</text>
+          <rect x="150" y="154" width="32" height="28" fill="#f59e0b" rx="4"/>
+          <text x="190" y="173.0" font-size="13" fill="#333">2788</text>
+        
+          <text x="0" y="211.0" font-size="13" fill="#333">cloud</text>
+          <rect x="150" y="192" width="32" height="28" fill="#f59e0b" rx="4"/>
+          <text x="190" y="211.0" font-size="13" fill="#333">2786</text>
+        
+      </svg>
+    </div>
+    
+    <div class="chart-card">
+      <h3>Top source IPs</h3>
+      <svg viewBox="0 0 520 354" width="100%" height="354">
+        
+          <text x="0" y="59.0" font-size="13" fill="#333">183.62.140.253</text>
+          <rect x="150" y="40" width="340" height="28" fill="#ef4444" rx="4"/>
+          <text x="498" y="59.0" font-size="13" fill="#333">866</text>
+        
+          <text x="0" y="97.0" font-size="13" fill="#333">10.11.10.1</text>
+          <rect x="150" y="78" width="204" height="28" fill="#ef4444" rx="4"/>
+          <text x="362" y="97.0" font-size="13" fill="#333">521</text>
+        
+          <text x="0" y="135.0" font-size="13" fill="#333">187.141.143.180</text>
+          <rect x="150" y="116" width="103" height="28" fill="#ef4444" rx="4"/>
+          <text x="261" y="135.0" font-size="13" fill="#333">264</text>
+        
+          <text x="0" y="173.0" font-size="13" fill="#333">10.0.0.8</text>
+          <rect x="150" y="154" width="73" height="28" fill="#ef4444" rx="4"/>
+          <text x="231" y="173.0" font-size="13" fill="#333">187</text>
+        
+          <text x="0" y="211.0" font-size="13" fill="#333">10.0.0.17</text>
+          <rect x="150" y="192" width="73" height="28" fill="#ef4444" rx="4"/>
+          <text x="231" y="211.0" font-size="13" fill="#333">187</text>
+        
+          <text x="0" y="249.0" font-size="13" fill="#333">10.100.20.250</text>
+          <rect x="150" y="230" width="73" height="28" fill="#ef4444" rx="4"/>
+          <text x="231" y="249.0" font-size="13" fill="#333">187</text>
+        
+          <text x="0" y="287.0" font-size="13" fill="#333">10.0.0.44</text>
+          <rect x="150" y="268" width="71" height="28" fill="#ef4444" rx="4"/>
+          <text x="229" y="287.0" font-size="13" fill="#333">181</text>
+        
+          <text x="0" y="325.0" font-size="13" fill="#333">10.0.0.11</text>
+          <rect x="150" y="306" width="69" height="28" fill="#ef4444" rx="4"/>
+          <text x="227" y="325.0" font-size="13" fill="#333">176</text>
+        
+      </svg>
+    </div>
+  </div>
+
+  
+    <div class="chart-card">
+      <h3>Confidence distribution</h3>
+      <svg viewBox="0 0 520 164" width="100%" height="164">
+        
+          <text x="0" y="59.0" font-size="13" fill="#333">medium (0.4-&lt;0.8)</text>
+          <rect x="150" y="40" width="340" height="28" fill="#10b981" rx="4"/>
+          <text x="498" y="59.0" font-size="13" fill="#333">27140</text>
+        
+          <text x="0" y="97.0" font-size="13" fill="#333">high (&gt;=0.8)</text>
+          <rect x="150" y="78" width="182" height="28" fill="#10b981" rx="4"/>
+          <text x="340" y="97.0" font-size="13" fill="#333">14566</text>
+        
+          <text x="0" y="135.0" font-size="13" fill="#333">low (&lt;0.4)</text>
+          <rect x="150" y="116" width="28" height="28" fill="#10b981" rx="4"/>
+          <text x="186" y="135.0" font-size="13" fill="#333">2247</text>
+        
+      </svg>
+    </div>
+
+  <h3 style="margin-top:24px;">Sample of normalized events (first 25)</h3>
+  <table>
+    <tr><th>Timestamp</th><th>Vendor</th><th>Format</th><th>Action</th><th>Src IP</th><th>Dst IP</th><th>Confidence</th></tr>
+    <tr><td>2026-08-31 09:12:03</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>192.168.1.10</td><td>10.0.0.5</td><td>0.95</td></tr><tr><td>2026-08-31 09:14:47</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>172.16.200.254</td><td>172.16.200.1</td><td>0.95</td></tr><tr><td>2026-08-31 09:20:11</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.22</td><td>8.8.8.8</td><td>0.95</td></tr><tr><td>2026-08-31 09:25:36</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>10.1.100.11</td><td>172.16.200.55</td><td>0.95</td></tr><tr><td>2026-08-31 09:31:59</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>203.0.113.44</td><td>192.168.1.50</td><td>0.95</td></tr><tr><td>2026-08-31 09:38:02</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.15</td><td>142.250.71.14</td><td>0.95</td></tr><tr><td>2026-08-31 09:42:18</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>198.51.100.14</td><td>192.168.1.12</td><td>0.95</td></tr><tr><td>2026-08-31 09:47:55</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>172.16.200.254</td><td>172.16.200.1</td><td>0.95</td></tr><tr><td>2026-08-31 09:51:07</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.40</td><td>10.0.0.5</td><td>0.95</td></tr><tr><td>2026-08-31 09:55:41</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>203.0.113.77</td><td>10.0.0.5</td><td>0.95</td></tr><tr><td>2026-08-31 10:02:14</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.18</td><td>13.107.42.14</td><td>0.95</td></tr><tr><td>2026-08-31 10:06:39</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>203.0.113.44</td><td>192.168.1.22</td><td>0.95</td></tr><tr><td>2026-08-31 10:11:52</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>10.1.100.15</td><td>172.16.200.55</td><td>0.95</td></tr><tr><td>2026-08-31 10:11:58</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>10.1.100.15</td><td>172.16.200.55</td><td>0.95</td></tr><tr><td>2026-08-31 10:12:03</td><td>fortinet</td><td>kv_syslog</td><td class='action-auth'>auth</td><td>10.1.100.15</td><td>172.16.200.55</td><td>0.95</td></tr><tr><td>2026-08-31 10:18:27</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.9</td><td>10.0.0.5</td><td>0.95</td></tr><tr><td>2026-08-31 10:30:40</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.6</td><td>203.0.113.71</td><td>0.95</td></tr><tr><td>2026-08-31 10:31:42</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>203.0.113.9</td><td>10.0.0.6</td><td>0.95</td></tr><tr><td>2026-08-31 10:33:48</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>203.0.113.57</td><td>10.0.0.33</td><td>0.95</td></tr><tr><td>2026-08-31 10:35:01</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>203.0.113.88</td><td>10.0.0.22</td><td>0.95</td></tr><tr><td>2026-08-31 10:36:34</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.29</td><td>203.0.113.25</td><td>0.95</td></tr><tr><td>2026-08-31 10:38:29</td><td>fortinet</td><td>kv_syslog</td><td class='action-deny'>deny</td><td>10.0.0.40</td><td>203.0.113.76</td><td>0.95</td></tr><tr><td>2026-08-31 10:40:18</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.50</td><td>203.0.113.18</td><td>0.95</td></tr><tr><td>2026-08-31 10:41:25</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>203.0.113.72</td><td>10.0.0.34</td><td>0.95</td></tr><tr><td>2026-08-31 10:43:00</td><td>fortinet</td><td>kv_syslog</td><td class='action-allow'>allow</td><td>10.0.0.39</td><td>203.0.113.63</td><td>0.95</td></tr>
+  </table>
+</body>
+</html>

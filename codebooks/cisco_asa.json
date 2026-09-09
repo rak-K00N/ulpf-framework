@@ -1,0 +1,62 @@
+{
+  "vendor": "cisco",
+  "product": "asa",
+  "messages": [
+    {
+      "code": "302013",
+      "description": "Connection built",
+      "action": "allow",
+      "event_type": "connection",
+      "regex": "Built (?P<direction>\\w+) (?P<protocol>\\w+) connection (?P<conn_id>\\d+) for \\w+:(?P<src_ip>[\\d.]+)/(?P<src_port>\\d+) \\([\\d.]+/\\d+\\) to \\w+:(?P<dst_ip>[\\d.]+)/(?P<dst_port>\\d+)"
+    },
+    {
+      "code": "302014",
+      "description": "Connection teardown",
+      "action": "other",
+      "event_type": "connection",
+      "regex": "Teardown (?P<protocol>\\w+) connection (?P<conn_id>\\d+) for \\w+:(?P<src_ip>[\\d.]+)/(?P<src_port>\\d+) to \\w+:(?P<dst_ip>[\\d.]+)/(?P<dst_port>\\d+) duration (?P<duration>[\\d:]+) bytes (?P<bytes>\\d+)"
+    },
+    {
+      "code": "106023",
+      "description": "Denied by access-group",
+      "action": "deny",
+      "event_type": "traffic",
+      "regex": "Deny (?P<protocol>\\w+) src \\w+:(?P<src_ip>[\\d.]+)/(?P<src_port>\\d+) dst \\w+:(?P<dst_ip>[\\d.]+)/(?P<dst_port>\\d+) by access-group \"(?P<acl>[^\"]+)\""
+    },
+    {
+      "code": "106021",
+      "description": "Denied by reverse path check (anti-spoofing)",
+      "action": "deny",
+      "event_type": "traffic",
+      "regex": "Deny protocol reverse path check from (?P<src_ip>[\\d.]+) to (?P<dst_ip>[\\d.]+) on interface (?P<interface>\\w+)"
+    },
+    {
+      "code": "313001",
+      "description": "Denied ICMP",
+      "action": "deny",
+      "event_type": "traffic",
+      "regex": "Denied ICMP type=(?P<icmp_type>\\d+), code=(?P<icmp_code>\\d+) from (?P<src_ip>[\\d.]+) on interface (?P<interface>\\w+)"
+    },
+    {
+      "code": "113004",
+      "description": "AAA authentication successful",
+      "action": "allow",
+      "event_type": "auth",
+      "regex": "AAA user authentication Successful : server = (?P<auth_server>[\\d.]+) : user = (?P<user>\\S+)"
+    },
+    {
+      "code": "113005",
+      "description": "AAA authentication rejected",
+      "action": "deny",
+      "event_type": "auth",
+      "regex": "AAA user authentication Rejected : reason = (?P<reason>.+?) : server = (?P<auth_server>[\\d.]+) : user = (?P<user>\\S+)"
+    },
+    {
+      "code": "111008",
+      "description": "Admin command executed",
+      "action": "other",
+      "event_type": "admin",
+      "regex": "User '(?P<user>[^']+)' executed the '(?P<command>[^']+)' command"
+    }
+  ]
+}
