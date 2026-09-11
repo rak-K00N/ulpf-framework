@@ -54,7 +54,7 @@ def record_source_seen(source_name, filepath, detected_format):
 
 
 def _onboarding_status(detected_format):
-    if detected_format in ("json", "csv", "kv_syslog", "cef"):
+    if detected_format in ("json", "csv", "kv_syslog", "cef", "leef", "syslog5424"):
         return "auto (zero-code, self-describing shape)"
     if detected_format == "coded_syslog":
         return "codebook-driven (JSON config only)"

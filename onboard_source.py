@@ -25,6 +25,7 @@ from collections import Counter
 
 from sniffer import sniff_file, CODED_SYSLOG_PATTERN
 from registry import record_source_seen
+from parsers.coded_syslog import _PREFIX_TO_VENDOR, _CODEBOOKS
 
 _CODEBOOK_DIR = os.path.join(os.path.dirname(__file__), "codebooks")
 
@@ -67,7 +68,7 @@ def onboard(sample_path, source_name):
     detected = sniff_file(sample_path)
     print(f"Sniffed format: {detected}")
 
-    if detected in ("json", "csv", "kv_syslog", "cef"):
+    if detected in ("json", "csv", "kv_syslog", "cef", "leef", "syslog5424"):
         record_source_seen(source_name, sample_path, detected)
         print(f"'{source_name}' is a self-describing '{detected}' shape.")
         print("No new code needed -- the existing extractor handles it.")
@@ -87,11 +88,11 @@ def onboard(sample_path, source_name):
             prefix_match = re.match(r"%([A-Za-z0-9_]+)-", first_match)
             prefix = prefix_match.group(1) if prefix_match else None
 
-        existing = os.path.join(_CODEBOOK_DIR, f"{(prefix or '').lower()}.json")
-        if prefix and os.path.exists(existing):
+        existing_vendor = _PREFIX_TO_VENDOR.get(prefix)
+        if existing_vendor and existing_vendor in _CODEBOOKS:
             record_source_seen(source_name, sample_path, detected)
             print(f"'{source_name}' uses message-code prefix '%{prefix}', "
-                  f"already covered by codebooks/{os.path.basename(existing)}.")
+                  f"already covered by the '{existing_vendor}' codebook.")
             print("No new code needed.")
             return
 

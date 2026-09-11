@@ -9,7 +9,6 @@ you just open the file in a browser.
 """
 import json
 from collections import Counter
-from html import escape
 
 
 def _svg_bar_chart(counter, title, width=520, bar_height=28, color="#3b82f6"):
@@ -23,7 +22,7 @@ def _svg_bar_chart(counter, title, width=520, bar_height=28, color="#3b82f6"):
         y = 40 + i * (bar_height + 10)
         bar_w = int((count / max_count) * (width - 180))
         bars.append(f'''
-          <text x="0" y="{y + bar_height/2 + 5}" font-size="13" fill="#333">{escape(str(label))}</text>
+          <text x="0" y="{y + bar_height/2 + 5}" font-size="13" fill="#333">{label}</text>
           <rect x="150" y="{y}" width="{bar_w}" height="{bar_height}" fill="{color}" rx="4"/>
           <text x="{150 + bar_w + 8}" y="{y + bar_height/2 + 5}" font-size="13" fill="#333">{count}</text>
         ''')
@@ -48,22 +47,19 @@ def generate_dashboard(events, out_path, title="ULPF Unified Visibility Dashboar
     conf_buckets = Counter()
     for e in events:
         c = e.get("confidence") or 0
-        conf_buckets["high (>=0.8)" if c >= 0.8 else "medium (0.4-<0.8)" if c >= 0.4 else "low (<0.4)"] += 1
+        conf_buckets["high (>=0.8)" if c >= 0.8 else "medium (0.4-0.8)" if c >= 0.4 else "low (<0.4)"] += 1
 
     denies = action_counts.get("deny", 0)
     allows = action_counts.get("allow", 0)
 
     sample_rows = events[:25]
     table_rows = "".join(
-      f"<tr><td>{escape(str(e.get('timestamp')))}</td>"
-      f"<td>{escape(str(e.get('vendor')))}</td>"
-      f"<td>{escape(str(e.get('source_format')))}</td>"
-      f"<td class='action-{escape(str(e.get('action')))}'>"
-      f"{escape(str(e.get('action')))}</td>"
-      f"<td>{escape(str(e.get('src_ip')))}</td>"
-      f"<td>{escape(str(e.get('dst_ip')))}</td>"
-      f"<td>{escape(str(e.get('confidence')))}</td></tr>"
-      for e in sample_rows
+        f"<tr><td>{e.get('timestamp')}</td><td>{e.get('vendor')}</td>"
+        f"<td>{e.get('source_format')}</td>"
+        f"<td class='action-{e.get('action')}'>{e.get('action')}</td>"
+        f"<td>{e.get('src_ip')}</td><td>{e.get('dst_ip')}</td>"
+        f"<td>{e.get('confidence')}</td></tr>"
+        for e in sample_rows
     )
 
     html = f"""<!DOCTYPE html>

@@ -1,0 +1,41 @@
+{
+  "vendor": "cisco_firepower",
+  "product": "ftd",
+  "messages": [
+    {
+      "code": "430001",
+      "description": "Connection allowed by access control policy",
+      "action": "allow",
+      "event_type": "traffic",
+      "regex": "AC_RuleAction: Allow, .*SrcIP: (?P<src_ip>[\\d.]+), DstIP: (?P<dst_ip>[\\d.]+), SrcPort: (?P<src_port>\\d+), DstPort: (?P<dst_port>\\d+), Protocol: (?P<protocol>\\w+)"
+    },
+    {
+      "code": "430002",
+      "description": "Connection blocked by access control policy",
+      "action": "deny",
+      "event_type": "traffic",
+      "regex": "AC_RuleAction: Block, .*SrcIP: (?P<src_ip>[\\d.]+), DstIP: (?P<dst_ip>[\\d.]+), SrcPort: (?P<src_port>\\d+), DstPort: (?P<dst_port>\\d+), Protocol: (?P<protocol>\\w+)"
+    },
+    {
+      "code": "430003",
+      "description": "Connection blocked by intrusion policy",
+      "action": "deny",
+      "event_type": "traffic",
+      "regex": "Intrusion Event.*SrcIP: (?P<src_ip>[\\d.]+), DstIP: (?P<dst_ip>[\\d.]+), SrcPort: (?P<src_port>\\d+), DstPort: (?P<dst_port>\\d+)"
+    },
+    {
+      "code": "111008",
+      "description": "Admin command executed",
+      "action": "other",
+      "event_type": "admin",
+      "regex": "User '(?P<user>[^']+)' executed the '(?P<command>[^']+)' command"
+    },
+    {
+      "code": "113004",
+      "description": "AAA authentication successful",
+      "action": "allow",
+      "event_type": "auth",
+      "regex": "AAA user authentication Successful : server = (?P<auth_server>[\\d.]+) : user = (?P<user>\\S+)"
+    }
+  ]
+}

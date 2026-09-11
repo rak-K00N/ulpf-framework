@@ -8,23 +8,47 @@ Also responsible for two things added for the ULPF requirements:
   - updating the source registry as new sources are seen
     (requirement e: plug-and-play onboarding)
 """
-from parsers import cef, coded_syslog, csv_parser, json_flow, kv_syslog
+import hashlib
+import os
+
+from parsers import cef, coded_syslog, csv_parser, json_flow, kv_syslog, leef, syslog5424
 from parsers.drain_fallback import DrainFallbackParser
 import normalizer
 from lineage import make_lineage
-from sniffer import sniff_file, sniff_line
+from sniffer import sniff_file, sniff_line, open_maybe_compressed
 from registry import record_source_seen
 
-_drain = DrainFallbackParser()
+# Each *source* gets its own Drain miner instance, not one shared globally.
+# Wildly different unknown formats (an Android logcat line and a BGL
+# supercomputer line share nothing structurally) must never compete for
+# the same template-cluster space -- that would both slow convergence and
+# produce meaningless cluster_ids. Keyed by source_name so the same
+# source seen across multiple files/runs keeps accumulating one template
+# vocabulary, matching the "gets better as you onboard more of a source's
+# traffic" story rather than starting cold every call.
+_drain_miners = {}
+_DRAIN_STATE_DIR = os.path.join(os.path.dirname(__file__), "drain_state")
 
 
-def process_file(filepath, source_name=None):
+def _get_drain_miner(source_key, persist=True):
+    if source_key not in _drain_miners:
+        persistence_path = None
+        if persist:
+            os.makedirs(_DRAIN_STATE_DIR, exist_ok=True)
+            digest = hashlib.sha256(source_key.encode()).hexdigest()[:16]
+            persistence_path = os.path.join(_DRAIN_STATE_DIR, f"{digest}.json")
+        _drain_miners[source_key] = DrainFallbackParser(persistence_path=persistence_path)
+    return _drain_miners[source_key]
+
+
+def process_file(filepath, source_name=None, persist_drain_state=True):
     """
     Yields (normalized_event, detected_format) for every line/row in
     filepath. This is the only function the outside world needs to call.
     """
     fmt = sniff_file(filepath)
-    record_source_seen(source_name or filepath, filepath, fmt)
+    source_key = source_name or filepath
+    record_source_seen(source_key, filepath, fmt)
 
     if fmt == "csv":
         for i, row in enumerate(csv_parser.parse_file(filepath), start=1):
@@ -33,16 +57,18 @@ def process_file(filepath, source_name=None):
             yield normalizer.normalize_csv(row, raw_line, lineage), fmt
         return
 
-    with open(filepath, "r", encoding="utf-8", errors="replace") as f:
+    drain = _get_drain_miner(source_key, persist=persist_drain_state) if fmt == "unknown" else None
+
+    with open_maybe_compressed(filepath) as f:
         for i, line in enumerate(f, start=1):
             line = line.rstrip("\n")
             if not line.strip():
                 continue
             lineage = make_lineage(filepath, i, line, source_name)
-            yield process_line(line, fmt, lineage), fmt
+            yield process_line(line, fmt, lineage, drain=drain), fmt
 
 
-def process_line(line, fmt_hint=None, lineage=None):
+def process_line(line, fmt_hint=None, lineage=None, drain=None):
     """Processes a single line, given an already-known format hint."""
     fmt = fmt_hint or sniff_line(line)
 
@@ -51,10 +77,20 @@ def process_line(line, fmt_hint=None, lineage=None):
         if fields is not None:
             return normalizer.normalize_json_flow(fields, line, lineage)
 
+    elif fmt == "leef":
+        fields = leef.parse_line(line)
+        if fields is not None:
+            return normalizer.normalize_leef(fields, line, lineage)
+
     elif fmt == "cef":
         fields = cef.parse_line(line)
         if fields is not None:
             return normalizer.normalize_cef(fields, line, lineage)
+
+    elif fmt == "syslog5424":
+        fields = syslog5424.parse_line(line)
+        if fields is not None:
+            return normalizer.normalize_syslog5424(fields, line, lineage)
 
     elif fmt == "coded_syslog":
         fields = coded_syslog.parse_line(line)
@@ -68,5 +104,6 @@ def process_line(line, fmt_hint=None, lineage=None):
 
     # nothing matched, or the shape-specific parser failed on this line
     # -> fall back to statistical template mining instead of dropping it
-    drain_result = _drain.parse_line(line)
+    drain = drain or _get_drain_miner("_adhoc_", persist=False)
+    drain_result = drain.parse_line(line)
     return normalizer.normalize_drain(drain_result, line, lineage)

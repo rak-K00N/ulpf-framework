@@ -40,7 +40,7 @@ def _load_codebooks():
 _CODEBOOKS = _load_codebooks()
 
 # maps the %PREFIX (e.g. "ASA") seen in the log line to a codebook vendor
-_PREFIX_TO_VENDOR = {"ASA": "cisco"}
+_PREFIX_TO_VENDOR = {"ASA": "cisco", "FTD": "cisco_firepower"}
 
 
 def parse_line(line):
