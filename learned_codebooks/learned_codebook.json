@@ -1,0 +1,1845 @@
+{
+  "codebook_version": 1,
+  "entries": [
+    {
+      "signature": "394f37c2140a1336",
+      "template": "- <*> 2005.11.09 tbird-admin1 Nov 9 <*> local@tbird-admin1 <*> data_thread() got not answer from any <*> datasource",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-admin1\\ Nov\\ 9\\ (.+?)\\ local@tbird\\-admin1\\ (.+?)\\ data_thread\\(\\)\\ got\\ not\\ answer\\ from\\ any\\ (.+?)\\ datasource$",
+      "roles": [],
+      "sample_count": 819,
+      "sample_line": "- 1131566461 2005.11.09 tbird-admin1 Nov 9 12:01:01 local@tbird-admin1 /apps/x86_64/system/ganglia-3.0.1/sbin/gmetad[1682]: data_thread() got not answer from any [Thunderbird_A8] datasource",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "16d62b7e14864c72",
+      "template": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 <*> <*> INFO nova.osapi_compute.wsgi.server <*> <*> <*> - - -] <*> <*> <*> HTTP/1.1\" status: <*> len: <*> time: <*>",
+      "regex": "^nova\\-api\\.log\\.1\\.2017\\-05\\-16_13:53:08\\ 2017\\-05\\-16\\ (.+?)\\ (.+?)\\ INFO\\ nova\\.osapi_compute\\.wsgi\\.server\\ (.+?)\\ (.+?)\\ (.+?)\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ HTTP/1\\.1\"\\ status:\\ (.+?)\\ len:\\ (.+?)\\ time:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 809,
+      "sample_line": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:00.008 25746 INFO nova.osapi_compute.wsgi.server [req-38101a0b-2096-447d-96ea-a692162415ae 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b64e6483861c6eae",
+      "template": "Jul <*> <*> combo <*> connection from <*> <*> at <*> Jul <*> <*> 2005",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ connection\\ from\\ (.+?)\\ (.+?)\\ at\\ (.+?)\\ Jul\\ (.+?)\\ (.+?)\\ 2005$",
+      "roles": [],
+      "sample_count": 747,
+      "sample_line": "Jul  1 07:57:30 combo ftpd[21952]: connection from 202.82.200.188 () at Fri Jul  1 07:57:30 2005",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "6d246fa005b30642",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO generating <*>",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ generating\\ (.+?)$",
+      "roles": [],
+      "sample_count": 721,
+      "sample_line": "- 1117955341 2005.06.05 R25-M0-N7-C:J02-U01 2005-06-05-00.09.01.903373 R25-M0-N7-C:J02-U01 RAS KERNEL INFO generating core.2275",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "441a4eba2276dd0e",
+      "template": "<*> <*> Info CBS Session: <*> initialized by client <*>",
+      "regex": "^(.+?)\\ (.+?)\\ Info\\ CBS\\ Session:\\ (.+?)\\ initialized\\ by\\ client\\ (.+?)$",
+      "roles": [],
+      "sample_count": 609,
+      "sample_line": "2016-09-28 04:30:31, Info                  CBS    Session: 30546173_4261722401 initialized by client WindowsUpdateAgent.",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e3d05f7af9bd0073",
+      "template": "<*> <*> <*> - <*> open through proxy <*> <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ open\\ through\\ proxy\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 606,
+      "sample_line": "[10.30 16:49:06] chrome.exe - proxy.cse.cuhk.edu.hk:5070 open through proxy proxy.cse.cuhk.edu.hk:5070 HTTPS",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "580c37860dd483e3",
+      "template": "- <*> 2005.11.09 <*> Nov 9 <*> <*> <*> synchronized to <*> stratum <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ (.+?)\\ Nov\\ 9\\ (.+?)\\ (.+?)\\ (.+?)\\ synchronized\\ to\\ (.+?)\\ stratum\\ (.+?)$",
+      "roles": [],
+      "sample_count": 568,
+      "sample_line": "- 1131566463 2005.11.09 cn142 Nov 9 12:01:03 cn142/cn142 ntpd[7467]: synchronized to 10.100.20.250, stratum 3",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "4158ffcdb6be0c7e",
+      "template": "<*> <*> Info CBS Read out cached package applicability for package: <*> ApplicableState: <*> <*>",
+      "regex": "^(.+?)\\ (.+?)\\ Info\\ CBS\\ Read\\ out\\ cached\\ package\\ applicability\\ for\\ package:\\ (.+?)\\ ApplicableState:\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 558,
+      "sample_line": "2016-09-28 04:30:33, Info                  CBS    Read out cached package applicability for package: Package_for_KB3121255~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5b282b809f0e393a",
+      "template": "<*> Step_ExtSDM 30002312 <*> <*>",
+      "regex": "^(.+?)\\ Step_ExtSDM\\ 30002312\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 482,
+      "sample_line": "20171223-22:15:29:645|Step_ExtSDM|30002312|calculateCaloriesWithCache totalCalories=126775",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "09af536d50519220",
+      "template": "[Sun Dec 04 <*> 2005] [notice] jk2_init() Found child <*> in scoreboard slot <*>",
+      "regex": "^\\[Sun\\ Dec\\ 04\\ (.+?)\\ 2005\\]\\ \\[notice\\]\\ jk2_init\\(\\)\\ Found\\ child\\ (.+?)\\ in\\ scoreboard\\ slot\\ (.+?)$",
+      "roles": [],
+      "sample_count": 442,
+      "sample_line": "[Sun Dec 04 04:51:08 2005] [notice] jk2_init() Found child 6725 in scoreboard slot 10",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e1f5a9e076666bb0",
+      "template": "<*> <*> gige temperature <*> 1 <*>",
+      "regex": "^(.+?)\\ (.+?)\\ gige\\ temperature\\ (.+?)\\ 1\\ (.+?)$",
+      "roles": [],
+      "sample_count": 431,
+      "sample_line": "2559971 gige7 gige temperature 1073151998 1 normal",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "fb35fb1c15d93658",
+      "template": "<*> Step_LSC 30002312 <*> <*>",
+      "regex": "^(.+?)\\ Step_LSC\\ 30002312\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 427,
+      "sample_line": "20171223-22:15:29:606|Step_LSC|30002312|onStandStepChanged 3579",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "7ad65b47386e4bff",
+      "template": "Dec 10 <*> LabSZ <*> Received disconnect from <*> 11: <*> <*> <*>",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ Received\\ disconnect\\ from\\ (.+?)\\ 11:\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 414,
+      "sample_line": "Dec 10 07:07:45 LabSZ sshd[24206]: Received disconnect from 52.80.34.196: 11: Bye Bye [preauth]",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "07a4c7dbe39d2d6e",
+      "template": "[Mon Dec 05 <*> 2005] [notice] jk2_init() Found child <*> in scoreboard slot <*>",
+      "regex": "^\\[Mon\\ Dec\\ 05\\ (.+?)\\ 2005\\]\\ \\[notice\\]\\ jk2_init\\(\\)\\ Found\\ child\\ (.+?)\\ in\\ scoreboard\\ slot\\ (.+?)$",
+      "roles": [],
+      "sample_count": 394,
+      "sample_line": "[Mon Dec 05 03:21:00 2005] [notice] jk2_init() Found child 2760 in scoreboard slot 6",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d39a10ff7437106c",
+      "template": "<*> <*> switch_module error <*> <*> Linkerror event interval expired",
+      "regex": "^(.+?)\\ (.+?)\\ switch_module\\ error\\ (.+?)\\ (.+?)\\ Linkerror\\ event\\ interval\\ expired$",
+      "roles": [],
+      "sample_count": 394,
+      "sample_line": "2569061 Interconnect-0N03 switch_module error 1074120426 1 Linkerror event interval expired",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9b7a3bdba6822ae2",
+      "template": "Dec 10 <*> LabSZ <*> pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= <*> <*>",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ pam_unix\\(sshd:auth\\):\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ tty=ssh\\ ruser=\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 384,
+      "sample_line": "Dec 10 07:13:31 LabSZ sshd[24227]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=5.36.59.76.dynamic-dsl-ip.omantel.net.om  user=root",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b5fc298465643e58",
+      "template": "Dec 10 <*> LabSZ <*> <*> password for <*> from <*> port <*> ssh2",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ (.+?)\\ password\\ for\\ (.+?)\\ from\\ (.+?)\\ port\\ (.+?)\\ ssh2$",
+      "roles": [],
+      "sample_count": 384,
+      "sample_line": "Dec 10 07:13:43 LabSZ sshd[24227]: Failed password for root from 5.36.59.76 port 42393 ssh2",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f79efc3909734041",
+      "template": "17/06/09 <*> INFO python.PythonRunner: Times: total = <*> boot = <*> init = <*> finish = <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ python\\.PythonRunner:\\ Times:\\ total\\ =\\ (.+?)\\ boot\\ =\\ (.+?)\\ init\\ =\\ (.+?)\\ finish\\ =\\ (.+?)$",
+      "roles": [],
+      "sample_count": 375,
+      "sample_line": "17/06/09 20:10:48 INFO python.PythonRunner: Times: total = 1072, boot = 856, init = 210, finish = 6",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "140344946394647c",
+      "template": "<*> <*> <*> *64 - <*> open through proxy proxy.cse.cuhk.edu.hk:5070 HTTPS",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\*64\\ \\-\\ (.+?)\\ open\\ through\\ proxy\\ proxy\\.cse\\.cuhk\\.edu\\.hk:5070\\ HTTPS$",
+      "roles": [],
+      "sample_count": 350,
+      "sample_line": "[07.26 13:30:34] chrome.exe *64 - www.baidu.com:80 open through proxy proxy.cse.cuhk.edu.hk:5070 HTTPS",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "297737c672a65904",
+      "template": "2015-10-18 <*> <*> WARN [LeaseRenewer:msrabi@msra-sa-41:9000] org.apache.hadoop.ipc.Client: Address change detected. Old: msra-sa-41/10.190.173.170:9000 New: msra-sa-41:9000",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ WARN\\ \\[LeaseRenewer:msrabi@msra\\-sa\\-41:9000\\]\\ org\\.apache\\.hadoop\\.ipc\\.Client:\\ Address\\ change\\ detected\\.\\ Old:\\ msra\\-sa\\-41/10\\.190\\.173\\.170:9000\\ New:\\ msra\\-sa\\-41:9000$",
+      "roles": [],
+      "sample_count": 327,
+      "sample_line": "2015-10-18 18:05:27,570 WARN [LeaseRenewer:msrabi@msra-sa-41:9000] org.apache.hadoop.ipc.Client: Address change detected. Old: msra-sa-41/10.190.173.170:9000 New: msra-sa-41:9000",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e25990b4442cd0e2",
+      "template": "2015-10-18 <*> <*> WARN [LeaseRenewer:msrabi@msra-sa-41:9000] org.apache.hadoop.hdfs.LeaseRenewer: Failed to renew lease for [DFSClient_NONMAPREDUCE_1537864556_1] for <*> seconds. Will retry shortly ...",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ WARN\\ \\[LeaseRenewer:msrabi@msra\\-sa\\-41:9000\\]\\ org\\.apache\\.hadoop\\.hdfs\\.LeaseRenewer:\\ Failed\\ to\\ renew\\ lease\\ for\\ \\[DFSClient_NONMAPREDUCE_1537864556_1\\]\\ for\\ (.+?)\\ seconds\\.\\ Will\\ retry\\ shortly\\ \\.\\.\\.$",
+      "roles": [],
+      "sample_count": 326,
+      "sample_line": "2015-10-18 18:05:27,570 WARN [LeaseRenewer:msrabi@msra-sa-41:9000] org.apache.hadoop.hdfs.LeaseRenewer: Failed to renew lease for [DFSClient_NONMAPREDUCE_1537864556_1] for 30 seconds.  Will retry shor",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b37677c957e7e7ac",
+      "template": "<*> <*> <*> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: <*> is added to <*> size <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.FSNamesystem:\\ BLOCK\\*\\ NameSystem\\.addStoredBlock:\\ blockMap\\ updated:\\ (.+?)\\ is\\ added\\ to\\ (.+?)\\ size\\ (.+?)$",
+      "roles": [],
+      "sample_count": 314,
+      "sample_line": "081109 204005 35 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.73.220:50010 is added to blk_7128370237687728475 size 67108864",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "1a20b07bbbb659c4",
+      "template": "<*> <*> <*> INFO dfs.DataNode$PacketResponder: PacketResponder <*> for block <*> terminating",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.DataNode\\$PacketResponder:\\ PacketResponder\\ (.+?)\\ for\\ block\\ (.+?)\\ terminating$",
+      "roles": [],
+      "sample_count": 311,
+      "sample_line": "081109 203615 148 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for block blk_38865049064139660 terminating",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "59d1fb28d0466ae3",
+      "template": "17/06/09 <*> INFO executor.CoarseGrainedExecutorBackend: Got assigned task <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ executor\\.CoarseGrainedExecutorBackend:\\ Got\\ assigned\\ task\\ (.+?)$",
+      "roles": [],
+      "sample_count": 305,
+      "sample_line": "17/06/09 20:10:45 INFO executor.CoarseGrainedExecutorBackend: Got assigned task 0",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a9237b70fcabc65b",
+      "template": "17/06/09 <*> INFO executor.Executor: Running task <*> in stage <*> (TID <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ executor\\.Executor:\\ Running\\ task\\ (.+?)\\ in\\ stage\\ (.+?)\\ \\(TID\\ (.+?)$",
+      "roles": [],
+      "sample_count": 305,
+      "sample_line": "17/06/09 20:10:45 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "6ed81d7844d2e638",
+      "template": "17/06/09 <*> INFO executor.Executor: Finished task <*> in stage <*> (TID <*> <*> bytes result sent to driver",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ executor\\.Executor:\\ Finished\\ task\\ (.+?)\\ in\\ stage\\ (.+?)\\ \\(TID\\ (.+?)\\ (.+?)\\ bytes\\ result\\ sent\\ to\\ driver$",
+      "roles": [],
+      "sample_count": 300,
+      "sample_line": "17/06/09 20:10:48 INFO executor.Executor: Finished task 3.0 in stage 0.0 (TID 3). 2703 bytes result sent to driver",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "72535ed79202174f",
+      "template": "2015-10-18 <*> <*> INFO [IPC Server handler <*> on 62270] org.apache.hadoop.mapred.TaskAttemptListenerImpl: <*> <*> <*> <*> <*> <*> <*>",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[IPC\\ Server\\ handler\\ (.+?)\\ on\\ 62270\\]\\ org\\.apache\\.hadoop\\.mapred\\.TaskAttemptListenerImpl:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 299,
+      "sample_line": "2015-10-18 18:02:02,510 INFO [IPC Server handler 13 on 62270] org.apache.hadoop.mapred.TaskAttemptListenerImpl: JVM with ID: jvm_1445144423722_0020_m_000002 given task: attempt_1445144423722_0020_m_00",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d2e80d1bcb14e5d5",
+      "template": "[Sun Dec 04 <*> 2005] [notice] workerEnv.init() ok /etc/httpd/conf/workers2.properties",
+      "regex": "^\\[Sun\\ Dec\\ 04\\ (.+?)\\ 2005\\]\\ \\[notice\\]\\ workerEnv\\.init\\(\\)\\ ok\\ /etc/httpd/conf/workers2\\.properties$",
+      "roles": [],
+      "sample_count": 298,
+      "sample_line": "[Sun Dec 04 04:47:44 2005] [notice] workerEnv.init() ok /etc/httpd/conf/workers2.properties",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "bf8cc48f05e8e4c5",
+      "template": "<*> <*> <*> INFO dfs.DataNode$PacketResponder: Received block <*> of size <*> from <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.DataNode\\$PacketResponder:\\ Received\\ block\\ (.+?)\\ of\\ size\\ (.+?)\\ from\\ (.+?)$",
+      "roles": [],
+      "sample_count": 292,
+      "sample_line": "081109 204655 556 INFO dfs.DataNode$PacketResponder: Received block blk_3587508140051953248 of size 67108864 from /10.251.42.84",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "33348ca76b502cc7",
+      "template": "<*> <*> <*> INFO dfs.DataNode$DataXceiver: Receiving block <*> src: <*> dest: <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.DataNode\\$DataXceiver:\\ Receiving\\ block\\ (.+?)\\ src:\\ (.+?)\\ dest:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 292,
+      "sample_line": "081109 204815 653 INFO dfs.DataNode$DataXceiver: Receiving block blk_5792489080791696128 src: /10.251.30.6:33145 dest: /10.251.30.6:50010",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "7a86c536cb1f4eb8",
+      "template": "<*> <*> node temperature <*> 1 <*>",
+      "regex": "^(.+?)\\ (.+?)\\ node\\ temperature\\ (.+?)\\ 1\\ (.+?)$",
+      "roles": [],
+      "sample_count": 292,
+      "sample_line": "2552992 node-212 node temperature 1072633140 1 ambient=30",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "eff6afee06a7b338",
+      "template": "[Sun Dec 04 <*> 2005] [error] mod_jk child workerEnv in error state <*>",
+      "regex": "^\\[Sun\\ Dec\\ 04\\ (.+?)\\ 2005\\]\\ \\[error\\]\\ mod_jk\\ child\\ workerEnv\\ in\\ error\\ state\\ (.+?)$",
+      "roles": [],
+      "sample_count": 281,
+      "sample_line": "[Sun Dec 04 04:47:44 2005] [error] mod_jk child workerEnv in error state 6",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b037b91c1cec3f26",
+      "template": "03-17 <*> 2227 2227 <*> <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 2227\\ 2227\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 277,
+      "sample_line": "03-17 16:13:38.955  2227  2227 I PhoneStatusBar: cancelAutohide",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "866bd878f6bda6d4",
+      "template": "<*> Step_LSC 30002312 <*> <*> 0 <*>",
+      "regex": "^(.+?)\\ Step_LSC\\ 30002312\\ (.+?)\\ (.+?)\\ 0\\ (.+?)$",
+      "roles": [],
+      "sample_count": 273,
+      "sample_line": "20171223-22:15:29:615|Step_LSC|30002312|onExtend:1514038530000 14 0 4",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "877cbd9920c6da00",
+      "template": "[Mon Dec 05 <*> 2005] [notice] workerEnv.init() ok /etc/httpd/conf/workers2.properties",
+      "regex": "^\\[Mon\\ Dec\\ 05\\ (.+?)\\ 2005\\]\\ \\[notice\\]\\ workerEnv\\.init\\(\\)\\ ok\\ /etc/httpd/conf/workers2\\.properties$",
+      "roles": [],
+      "sample_count": 271,
+      "sample_line": "[Mon Dec 05 03:21:02 2005] [notice] workerEnv.init() ok /etc/httpd/conf/workers2.properties",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "82923d4087ac289a",
+      "template": "<*> <*> <*> INFO dfs.FSDataset: Deleting block <*> file <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.FSDataset:\\ Deleting\\ block\\ (.+?)\\ file\\ (.+?)$",
+      "roles": [],
+      "sample_count": 263,
+      "sample_line": "081109 213837 19 INFO dfs.FSDataset: Deleting block blk_1781953582842324563 file /mnt/hadoop/dfs/data/current/subdir5/blk_1781953582842324563",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ddb60cd5ddda5ac5",
+      "template": "[Mon Dec 05 <*> 2005] [error] mod_jk child workerEnv in error state <*>",
+      "regex": "^\\[Mon\\ Dec\\ 05\\ (.+?)\\ 2005\\]\\ \\[error\\]\\ mod_jk\\ child\\ workerEnv\\ in\\ error\\ state\\ (.+?)$",
+      "roles": [],
+      "sample_count": 258,
+      "sample_line": "[Mon Dec 05 03:21:02 2005] [error] mod_jk child workerEnv in error state 6",
+      "learned_from_source": "12_apache_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "874f40b712634458",
+      "template": "17/06/09 <*> INFO storage.BlockManager: Found block <*> locally",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ storage\\.BlockManager:\\ Found\\ block\\ (.+?)\\ locally$",
+      "roles": [],
+      "sample_count": 257,
+      "sample_line": "17/06/09 20:10:52 INFO storage.BlockManager: Found block rdd_2_0 locally",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "033e4c9723ec3921",
+      "template": "Jul <*> <*> combo <*> authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= <*> <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ tty=NODEVssh\\ ruser=\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 251,
+      "sample_line": "Jul  1 00:21:28 combo sshd(pam_unix)[19630]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=60.30.224.116  user=root",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "abd76a4f0c7418da",
+      "template": "<*> Step_SPUtils 30002312 <*>",
+      "regex": "^(.+?)\\ Step_SPUtils\\ 30002312\\ (.+?)$",
+      "roles": [],
+      "sample_count": 244,
+      "sample_line": "20171223-22:15:29:636|Step_SPUtils|30002312|setTodayTotalDetailSteps=1514038440000##7007##548365##8661##12361##27173954",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "64dffc77084e1a36",
+      "template": "<*> Step_SPUtils 30002312 getTodayTotalDetailSteps = <*>",
+      "regex": "^(.+?)\\ Step_SPUtils\\ 30002312\\ getTodayTotalDetailSteps\\ =\\ (.+?)$",
+      "roles": [],
+      "sample_count": 242,
+      "sample_line": "20171223-22:15:29:635|Step_SPUtils|30002312| getTodayTotalDetailSteps = 1514038440000##6993##548365##8661##12266##27164404",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0ce9b60c546ed996",
+      "template": "<*> <*> Info CBS Failed to <*> <*> <*> [HRESULT = <*> - <*>",
+      "regex": "^(.+?)\\ (.+?)\\ Info\\ CBS\\ Failed\\ to\\ (.+?)\\ (.+?)\\ (.+?)\\ \\[HRESULT\\ =\\ (.+?)\\ \\-\\ (.+?)$",
+      "roles": [],
+      "sample_count": 242,
+      "sample_line": "2016-09-28 04:30:31, Info                  CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f5079e0d3bc29ce4",
+      "template": "<*> <*> Info CBS Warning: Unrecognized packageExtended attribute.",
+      "regex": "^(.+?)\\ (.+?)\\ Info\\ CBS\\ Warning:\\ Unrecognized\\ packageExtended\\ attribute\\.$",
+      "roles": [],
+      "sample_count": 240,
+      "sample_line": "2016-09-28 04:30:32, Info                  CBS    Warning: Unrecognized packageExtended attribute.",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "edc887aa95192aa7",
+      "template": "<*> <*> <*> INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: <*> is added to invalidSet of <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.FSNamesystem:\\ BLOCK\\*\\ NameSystem\\.delete:\\ (.+?)\\ is\\ added\\ to\\ invalidSet\\ of\\ (.+?)$",
+      "roles": [],
+      "sample_count": 224,
+      "sample_line": "081110 020724 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_2568309208894455676 is added to invalidSet of 10.251.31.160:50010",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9aa2b728a94a7109",
+      "template": "<*> <*> Info CBS Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]",
+      "regex": "^(.+?)\\ (.+?)\\ Info\\ CBS\\ Expecting\\ attribute\\ name\\ \\[HRESULT\\ =\\ 0x800f080d\\ \\-\\ CBS_E_MANIFEST_INVALID_ITEM\\]$",
+      "roles": [],
+      "sample_count": 224,
+      "sample_line": "2016-09-28 04:30:31, Info                  CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f68e366013aba26e",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO iar <*> dear <*>",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ iar\\ (.+?)\\ dear\\ (.+?)$",
+      "roles": [],
+      "sample_count": 208,
+      "sample_line": "- 1125082053 2005.08.26 R62-M1-N3-C:J04-U01 2005-08-26-11.47.33.903841 R62-M1-N3-C:J04-U01 RAS KERNEL INFO iar 003a90fc dear 00b360e8",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "59f4e465883c29d2",
+      "template": "03-17 <*> 2227 2227 I PhoneStatusBar: setSystemUiVisibility <*> <*> <*> <*> <*> fullscreenStackVis=0 dockedStackVis=0 fullscreenStackBounds=Rect(0 0 - <*> <*> dockedStackBounds=Rect(0 0 - 0 0)",
+      "regex": "^03\\-17\\ (.+?)\\ 2227\\ 2227\\ I\\ PhoneStatusBar:\\ setSystemUiVisibility\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ fullscreenStackVis=0\\ dockedStackVis=0\\ fullscreenStackBounds=Rect\\(0\\ 0\\ \\-\\ (.+?)\\ (.+?)\\ dockedStackBounds=Rect\\(0\\ 0\\ \\-\\ 0\\ 0\\)$",
+      "roles": [],
+      "sample_count": 200,
+      "sample_line": "03-17 16:13:38.954  2227  2227 I PhoneStatusBar: setSystemUiVisibility vis=40000500 mask=ffffffff oldVal=508 newVal=40000500 diff=40000008 fullscreenStackVis=0 dockedStackVis=0, fullscreenStackBounds=",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d795c87ba388a227",
+      "template": "03-17 <*> 1702 <*> D PowerManagerService: ready=true policy=3 wakefulness=1 <*> uasummary=0x1 bootcompleted=true boostinprogress=false waitmodeenable=false mode=false manual=38 auto=-1 adj=0.0userId=0",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ PowerManagerService:\\ ready=true\\ policy=3\\ wakefulness=1\\ (.+?)\\ uasummary=0x1\\ bootcompleted=true\\ boostinprogress=false\\ waitmodeenable=false\\ mode=false\\ manual=38\\ auto=\\-1\\ adj=0\\.0userId=0$",
+      "roles": [],
+      "sample_count": 199,
+      "sample_line": "03-17 16:13:38.820  1702  8671 D PowerManagerService: ready=true,policy=3,wakefulness=1,wksummary=0x23,uasummary=0x1,bootcompleted=true,boostinprogress=false,waitmodeenable=false,mode=false,manual=38,",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "136efc145254bfcb",
+      "template": "03-17 <*> 1702 1820 I DisplayPowerController: HBM <*> =38",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ 1820\\ I\\ DisplayPowerController:\\ HBM\\ (.+?)\\ =38$",
+      "roles": [],
+      "sample_count": 170,
+      "sample_line": "03-17 16:13:41.614  1702  1820 I DisplayPowerController: HBM brightnessIn =38",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "be2d0d607c37f2e0",
+      "template": "Jul <*> <*> <*> <*> <*> scheduler_evaluate_activity told me to run this job; however but the start time isn't for <*> seconds. Ignoring.",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ scheduler_evaluate_activity\\ told\\ me\\ to\\ run\\ this\\ job;\\ however\\ but\\ the\\ start\\ time\\ isn't\\ for\\ (.+?)\\ seconds\\.\\ Ignoring\\.$",
+      "roles": [],
+      "sample_count": 166,
+      "sample_line": "Jul  1 09:19:13 calvisitor-10-105-160-95 com.apple.cts[258]: com.apple.icloud.fmfd.heartbeat: scheduler_evaluate_activity told me to run this job; however, but the start time isn't for 439034 seconds.",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e15619ef9e8babcc",
+      "template": "Jun <*> <*> combo <*> connection from <*> <*> at <*> Jun <*> <*> 2005",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ connection\\ from\\ (.+?)\\ (.+?)\\ at\\ (.+?)\\ Jun\\ (.+?)\\ (.+?)\\ 2005$",
+      "roles": [],
+      "sample_count": 162,
+      "sample_line": "Jun 17 07:07:00 combo ftpd[29504]: connection from 24.54.76.216 (24-54-76-216.bflony.adelphia.net) at Fri Jun 17 07:07:00 2005",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "8a1cb3e57efc4659",
+      "template": "17/06/09 <*> INFO storage.MemoryStore: Block <*> stored as <*> in memory (estimated size <*> <*> free <*> KB)",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ storage\\.MemoryStore:\\ Block\\ (.+?)\\ stored\\ as\\ (.+?)\\ in\\ memory\\ \\(estimated\\ size\\ (.+?)\\ (.+?)\\ free\\ (.+?)\\ KB\\)$",
+      "roles": [],
+      "sample_count": 149,
+      "sample_line": "17/06/09 20:10:45 INFO storage.MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 5.2 KB, free 5.2 KB)",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "563f2366b85ee211",
+      "template": "<*> <*> <*> - <*> close <*> bytes sent <*> bytes received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ sent\\ (.+?)\\ bytes\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 148,
+      "sample_line": "[10.30 16:49:07] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 0 bytes sent, 0 bytes received, lifetime 00:01",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d369a6ce75156834",
+      "template": "2015-10-18 <*> <*> ERROR [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: ERROR IN CONTACTING RM.",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ ERROR\\ \\[RMCommunicator\\ Allocator\\]\\ org\\.apache\\.hadoop\\.mapreduce\\.v2\\.app\\.rm\\.RMContainerAllocator:\\ ERROR\\ IN\\ CONTACTING\\ RM\\.$",
+      "roles": [],
+      "sample_count": 147,
+      "sample_line": "2015-10-18 18:06:01,840 ERROR [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: ERROR IN CONTACTING RM.",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "91f6582b716467ed",
+      "template": "2015-10-18 <*> <*> WARN [RMCommunicator Allocator] org.apache.hadoop.ipc.Client: Address change detected. Old: msra-sa-41/10.190.173.170:8030 New: msra-sa-41:8030",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ WARN\\ \\[RMCommunicator\\ Allocator\\]\\ org\\.apache\\.hadoop\\.ipc\\.Client:\\ Address\\ change\\ detected\\.\\ Old:\\ msra\\-sa\\-41/10\\.190\\.173\\.170:8030\\ New:\\ msra\\-sa\\-41:8030$",
+      "roles": [],
+      "sample_count": 146,
+      "sample_line": "2015-10-18 18:06:02,841 WARN [RMCommunicator Allocator] org.apache.hadoop.ipc.Client: Address change detected. Old: msra-sa-41/10.190.173.170:8030 New: msra-sa-41:8030",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "733f169ddd4e6806",
+      "template": "2015-10-18 <*> <*> INFO [RMCommunicator Allocator] org.apache.hadoop.ipc.Client: Retrying connect to server: msra-sa-41:8030. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10 sleepTime=1000 MILLISECONDS)",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[RMCommunicator\\ Allocator\\]\\ org\\.apache\\.hadoop\\.ipc\\.Client:\\ Retrying\\ connect\\ to\\ server:\\ msra\\-sa\\-41:8030\\.\\ Already\\ tried\\ 0\\ time\\(s\\);\\ retry\\ policy\\ is\\ RetryUpToMaximumCountWithFixedSleep\\(maxRetries=10\\ sleepTime=1000\\ MILLISECONDS\\)$",
+      "roles": [],
+      "sample_count": 146,
+      "sample_line": "2015-10-18 18:06:03,856 INFO [RMCommunicator Allocator] org.apache.hadoop.ipc.Client: Retrying connect to server: msra-sa-41:8030. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFix",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "48978954548ee3af",
+      "template": "2015-10-18 <*> <*> INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: <*> <*> <*> <*>",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[RMCommunicator\\ Allocator\\]\\ org\\.apache\\.hadoop\\.mapreduce\\.v2\\.app\\.rm\\.RMContainerAllocator:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 141,
+      "sample_line": "2015-10-18 18:01:54,853 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: Recalculating schedule, headroom=<memory:10240, vCores:-17>",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "3250e9dd061ba25e",
+      "template": "<*> <*> action start <*> 1 <*> (command <*>",
+      "regex": "^(.+?)\\ (.+?)\\ action\\ start\\ (.+?)\\ 1\\ (.+?)\\ \\(command\\ (.+?)$",
+      "roles": [],
+      "sample_count": 141,
+      "sample_line": "2568643 node-70 action start 1074119817 1 clusterAddMember  (command 1902)",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "50f49ebbee00f2c0",
+      "template": "<*> <*> chrome.exe *64 - <*> close <*> bytes <*> KB) sent <*> bytes <*> <*> received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ chrome\\.exe\\ \\*64\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ (.+?)\\ KB\\)\\ sent\\ (.+?)\\ bytes\\ (.+?)\\ (.+?)\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 141,
+      "sample_line": "[07.26 13:30:39] chrome.exe *64 - www.baidu.com:80 close, 6719 bytes (6.56 KB) sent, 644545 bytes (629 KB) received, lifetime 00:05",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0c4e532be18c26d8",
+      "template": "Dec 10 <*> LabSZ <*> Failed <*> for invalid user <*> from <*> port <*> ssh2",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ Failed\\ (.+?)\\ for\\ invalid\\ user\\ (.+?)\\ from\\ (.+?)\\ port\\ (.+?)\\ ssh2$",
+      "roles": [],
+      "sample_count": 139,
+      "sample_line": "Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f61d3bcafe736d83",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 <*> nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> base <*> /var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ (.+?)\\ nova\\.virt\\.libvirt\\.imagecache\\ \\[req\\-addc1839\\-2ed5\\-4778\\-b57e\\-5854eb7b8b09\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ base\\ (.+?)\\ /var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742$",
+      "roles": [],
+      "sample_count": 139,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:20.345 2931 WARNING nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Unknown base file: /var/lib/nova/instances",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b52e53682e392629",
+      "template": "<*> <*> <*> - <*> close <*> bytes <*> KB) sent <*> bytes <*> <*> received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ (.+?)\\ KB\\)\\ sent\\ (.+?)\\ bytes\\ (.+?)\\ (.+?)\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 137,
+      "sample_line": "[10.30 16:49:08] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 1190 bytes (1.16 KB) sent, 1671 bytes (1.63 KB) received, lifetime 00:02",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c05fcf49ccdeef7b",
+      "template": "<*> Step_StandReportReceiver 30002312 REPORT : <*> <*> <*> <*>",
+      "regex": "^(.+?)\\ Step_StandReportReceiver\\ 30002312\\ REPORT\\ :\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 136,
+      "sample_line": "20171223-22:15:29:649|Step_StandReportReceiver|30002312|REPORT : 7007 5002 150089 240",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "78c16f72881f141f",
+      "template": "<*> <*> node status <*> <*> running",
+      "regex": "^(.+?)\\ (.+?)\\ node\\ status\\ (.+?)\\ (.+?)\\ running$",
+      "roles": [],
+      "sample_count": 133,
+      "sample_line": "2579921 node-140 node status 1074216940 1 running",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9e5501027bb0b923",
+      "template": "2015-10-18 <*> <*> INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: Reduce slow start threshold not met. completedMapsForReduceSlowstart 1",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[RMCommunicator\\ Allocator\\]\\ org\\.apache\\.hadoop\\.mapreduce\\.v2\\.app\\.rm\\.RMContainerAllocator:\\ Reduce\\ slow\\ start\\ threshold\\ not\\ met\\.\\ completedMapsForReduceSlowstart\\ 1$",
+      "roles": [],
+      "sample_count": 130,
+      "sample_line": "2015-10-18 18:01:54,853 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: Reduce slow start threshold not met. completedMapsForReduceSlowstart 1",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "332675aa8a48da1a",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.claims <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> <*> <*> <*> <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.claims\\ (.+?)\\ 113d3a99c3da401fbd62cc2caa5b96d2\\ 54fadb412c4e40cdbaed9335e4c35a9e\\ \\-\\ \\-\\ \\-\\]\\ \\[instance:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 126,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:31.093 2931 INFO nova.compute.claims [req-6a763803-4838-49c7-814e-eaefbaddee9d 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "194e3e6fd40ed4d6",
+      "template": "- <*> 2005.11.09 tbird-sm1 Nov 9 <*> src@tbird-sm1 ib_sm.x[24904]: <*> <*> <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-sm1\\ Nov\\ 9\\ (.+?)\\ src@tbird\\-sm1\\ ib_sm\\.x\\[24904\\]:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 124,
+      "sample_line": "- 1131566470 2005.11.09 tbird-sm1 Nov 9 12:01:10 src@tbird-sm1 ib_sm.x[24904]: [ib_sm_sweep.c:1831]: ********************** NEW SWEEP ********************",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ceadcd9fa90dac91",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO <*> floating point alignment exceptions",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ (.+?)\\ floating\\ point\\ alignment\\ exceptions$",
+      "roles": [],
+      "sample_count": 121,
+      "sample_line": "- 1121900469 2005.07.20 R33-M1-N3-C:J02-U01 2005-07-20-16.01.09.861175 R33-M1-N3-C:J02-U01 RAS KERNEL INFO 8 floating point alignment exceptions",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "160aa32e6e22d1c6",
+      "template": "Jun <*> <*> combo <*> authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= <*> <*>",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ tty=NODEVssh\\ ruser=\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 121,
+      "sample_line": "Jun 15 02:04:59 combo sshd(pam_unix)[20882]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip.hinet.net  user=root",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f43d26d3ba9979ed",
+      "template": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 <*> <*> INFO nova.metadata.wsgi.server <*> - - - - -] <*> 10.11.10.1 \"GET <*> HTTP/1.1\" status: <*> len: <*> time: <*>",
+      "regex": "^nova\\-api\\.log\\.1\\.2017\\-05\\-16_13:53:08\\ 2017\\-05\\-16\\ (.+?)\\ (.+?)\\ INFO\\ nova\\.metadata\\.wsgi\\.server\\ (.+?)\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ 10\\.11\\.10\\.1\\ \"GET\\ (.+?)\\ HTTP/1\\.1\"\\ status:\\ (.+?)\\ len:\\ (.+?)\\ time:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 119,
+      "sample_line": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:16.795 25783 INFO nova.metadata.wsgi.server [req-b40b44ea-c721-4bc4-b1cd-bb238982ede4 - - - - -] 10.11.21.122,10.11.10.1 \"GET /openstack/2012-08-10/",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5455e79e524adea7",
+      "template": "03-17 <*> 2227 2227 I <*> <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 2227\\ 2227\\ I\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 118,
+      "sample_line": "03-17 16:13:38.928  2227  2227 I StackScrollAlgorithm: updateDimmedActivatedHideSensitive overlap:false",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "58dae1b8b45aea85",
+      "template": "03-17 <*> 1702 <*> W ActivityManager: <*> caller <*> does not hold REAL_GET_TASKS; limiting output",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ W\\ ActivityManager:\\ (.+?)\\ caller\\ (.+?)\\ does\\ not\\ hold\\ REAL_GET_TASKS;\\ limiting\\ output$",
+      "roles": [],
+      "sample_count": 118,
+      "sample_line": "03-17 16:13:38.935  1702  3697 W ActivityManager: getRunningAppProcesses: caller 10113 does not hold REAL_GET_TASKS; limiting output",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "87a10beb3d25ce94",
+      "template": "<*> <*> <*> INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: <*> <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.FSNamesystem:\\ BLOCK\\*\\ NameSystem\\.allocateBlock:\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 115,
+      "sample_line": "081109 205035 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand/_temporary/_task_200811092030_0001_m_000590_0/part-00590. blk_-1727475099218615100",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "297251df30b603d2",
+      "template": "<*> <*> <*> - <*> close <*> bytes sent <*> bytes received lifetime <1 sec",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ sent\\ (.+?)\\ bytes\\ received\\ lifetime\\ <1\\ sec$",
+      "roles": [],
+      "sample_count": 113,
+      "sample_line": "[10.30 16:49:07] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 403 bytes sent, 426 bytes received, lifetime <1 sec",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "042207a2ab51cdb7",
+      "template": "Dec 10 <*> LabSZ <*> pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= <*>",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ pam_unix\\(sshd:auth\\):\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ tty=ssh\\ ruser=\\ (.+?)$",
+      "roles": [],
+      "sample_count": 110,
+      "sample_line": "Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=173.234.31.186",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "532e51cc41fc27c3",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO <*> double-hummer alignment exceptions",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ (.+?)\\ double\\-hummer\\ alignment\\ exceptions$",
+      "roles": [],
+      "sample_count": 109,
+      "sample_line": "- 1117842440 2005.06.03 R23-M0-NE-C:J05-U01 2005-06-03-16.47.20.730545 R23-M0-NE-C:J05-U01 RAS KERNEL INFO 63543 double-hummer alignment exceptions",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "da97574978aebdef",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO <*> <*> - - - - -] <*> <*> <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ (.+?)\\ (.+?)\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 105,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:20.349 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Removing base or swap file: /var/lib/nova/ins",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "10b7e7755b6c8148",
+      "template": "<*> <*> chrome.exe *64 - <*> close <*> bytes <*> <*> <*> <*> <*> received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ chrome\\.exe\\ \\*64\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 99,
+      "sample_line": "[07.26 13:31:21] chrome.exe *64 - www.googletagservices.com:443 close, 1257 bytes (1.22 KB) sent, 540 bytes received, lifetime 04:00",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "8838cdec83ba3747",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO <*> [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ (.+?)\\ \\[req\\-addc1839\\-2ed5\\-4778\\-b57e\\-5854eb7b8b09\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 97,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:05.185 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] image 0673dd71-34c5-4fbb-86c4-40623fbe45b4 at",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ffbe0bf5a1dc5f67",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO CE sym <*> at <*> mask <*>",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ CE\\ sym\\ (.+?)\\ at\\ (.+?)\\ mask\\ (.+?)$",
+      "roles": [],
+      "sample_count": 92,
+      "sample_line": "- 1117848119 2005.06.03 R16-M1-N2-C:J17-U01 2005-06-03-18.21.59.871925 R16-M1-N2-C:J17-U01 RAS KERNEL INFO CE sym 2, at 0x0b85eee0, mask 0x05",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f4d7ce2571294161",
+      "template": "<*> <*> node status <*> <*> configured out",
+      "regex": "^(.+?)\\ (.+?)\\ node\\ status\\ (.+?)\\ (.+?)\\ configured\\ out$",
+      "roles": [],
+      "sample_count": 91,
+      "sample_line": "2567534 node-97 node status 1074098640 1 configured out",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "1288251681c18550",
+      "template": "<*> <*> unix.hw net.niff.up <*> 1 NIFF: node <*> has detected an available network connection on network <*> via interface <*>",
+      "regex": "^(.+?)\\ (.+?)\\ unix\\.hw\\ net\\.niff\\.up\\ (.+?)\\ 1\\ NIFF:\\ node\\ (.+?)\\ has\\ detected\\ an\\ available\\ network\\ connection\\ on\\ network\\ (.+?)\\ via\\ interface\\ (.+?)$",
+      "roles": [],
+      "sample_count": 91,
+      "sample_line": "2573188 node-129 unix.hw net.niff.up 1074131255 1 NIFF: node node-129 has detected an available network connection on network 10.128.0.0 via interface ee0",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "bf3b62d3b9020abf",
+      "template": "<*> Interconnect-0N00 switch_module fan <*> 1 Fan speeds ( <*> <*> <*> <*> <*> <*> )",
+      "regex": "^(.+?)\\ Interconnect\\-0N00\\ switch_module\\ fan\\ (.+?)\\ 1\\ Fan\\ speeds\\ \\(\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ \\)$",
+      "roles": [],
+      "sample_count": 90,
+      "sample_line": "268543 Interconnect-0N00 switch_module fan 1119372267 1 Fan speeds ( 3552 3534 3375 **** 3515 3479 )",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5e4574dbabe0f151",
+      "template": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 <*> <*> INFO nova.metadata.wsgi.server [-] <*> 10.11.10.1 \"GET <*> HTTP/1.1\" status: <*> len: <*> time: <*>",
+      "regex": "^nova\\-api\\.log\\.1\\.2017\\-05\\-16_13:53:08\\ 2017\\-05\\-16\\ (.+?)\\ (.+?)\\ INFO\\ nova\\.metadata\\.wsgi\\.server\\ \\[\\-\\]\\ (.+?)\\ 10\\.11\\.10\\.1\\ \"GET\\ (.+?)\\ HTTP/1\\.1\"\\ status:\\ (.+?)\\ len:\\ (.+?)\\ time:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 89,
+      "sample_line": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:16.806 25783 INFO nova.metadata.wsgi.server [-] 10.11.21.122,10.11.10.1 \"GET /openstack/2013-10-17 HTTP/1.1\" status: 200 len: 157 time: 0.0008290",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9848a84b71d44b56",
+      "template": "<*> <*> <*> *64 - <*> close <*> bytes sent <*> bytes received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\*64\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ sent\\ (.+?)\\ bytes\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 87,
+      "sample_line": "[07.26 13:30:45] chrome.exe *64 - ss.bdimg.com:80 close, 0 bytes sent, 0 bytes received, lifetime 00:11",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "2acd27bb62f309f5",
+      "template": "03-17 <*> 1702 1820 D DisplayPowerController: Animating brightness: target=38 rate=200",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ 1820\\ D\\ DisplayPowerController:\\ Animating\\ brightness:\\ target=38\\ rate=200$",
+      "roles": [],
+      "sample_count": 85,
+      "sample_line": "03-17 16:13:41.614  1702  1820 D DisplayPowerController: Animating brightness: target=38, rate=200",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "25d0da8fca8b6672",
+      "template": "Dec 10 <*> LabSZ <*> reverse mapping checking getaddrinfo for <*> <*> failed - POSSIBLE BREAK-IN ATTEMPT!",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ reverse\\ mapping\\ checking\\ getaddrinfo\\ for\\ (.+?)\\ (.+?)\\ failed\\ \\-\\ POSSIBLE\\ BREAK\\-IN\\ ATTEMPT!$",
+      "roles": [],
+      "sample_count": 85,
+      "sample_line": "Dec 10 06:55:46 LabSZ sshd[24200]: reverse mapping checking getaddrinfo for ns.marryaldkfaczcz.com [173.234.31.186] failed - POSSIBLE BREAK-IN ATTEMPT!",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e270fc87f79b036d",
+      "template": "Jun <*> <*> combo <*> authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= <*>",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ tty=NODEVssh\\ ruser=\\ (.+?)$",
+      "roles": [],
+      "sample_count": 83,
+      "sample_line": "Jun 14 15:16:01 combo sshd(pam_unix)[19939]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "edc0b3b799bbee2c",
+      "template": "Jun <*> <*> combo <*> check pass; user unknown",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ check\\ pass;\\ user\\ unknown$",
+      "roles": [],
+      "sample_count": 82,
+      "sample_line": "Jun 14 15:16:02 combo sshd(pam_unix)[19937]: check pass; user unknown",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "43057c18432f3c05",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] image 0673dd71-34c5-4fbb-86c4-40623fbe45b4 at (/var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742): in use: on this node 1 local 0 on other nodes sharing this instance storage",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.virt\\.libvirt\\.imagecache\\ \\[req\\-addc1839\\-2ed5\\-4778\\-b57e\\-5854eb7b8b09\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ image\\ 0673dd71\\-34c5\\-4fbb\\-86c4\\-40623fbe45b4\\ at\\ \\(/var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742\\):\\ in\\ use:\\ on\\ this\\ node\\ 1\\ local\\ 0\\ on\\ other\\ nodes\\ sharing\\ this\\ instance\\ storage$",
+      "roles": [],
+      "sample_count": 82,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:05.186 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] image 0673dd71-34c5-4fbb-86c4-40623fbe45b4 at",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5e194b8d1c09bc63",
+      "template": "<*> <*> <*> INFO dfs.DataNode$DataXceiver: <*> Served block <*> to <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ INFO\\ dfs\\.DataNode\\$DataXceiver:\\ (.+?)\\ Served\\ block\\ (.+?)\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 80,
+      "sample_line": "081109 213847 2552 INFO dfs.DataNode$DataXceiver: 10.251.194.213:50010 Served block blk_-7724713468912166542 to /10.251.203.80",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "4f80721f449248ea",
+      "template": "<*> <*> <*> WARN dfs.DataNode$DataXceiver: <*> exception while serving <*> to <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ WARN\\ dfs\\.DataNode\\$DataXceiver:\\ (.+?)\\ exception\\ while\\ serving\\ (.+?)\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 80,
+      "sample_line": "081109 214043 2561 WARN dfs.DataNode$DataXceiver: 10.251.30.85:50010:Got exception while serving blk_-2918118818249673980 to /10.251.90.64:",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a3eab7e9044f731d",
+      "template": "Jul <*> <*> combo <*> session opened for user <*> by <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ session\\ opened\\ for\\ user\\ (.+?)\\ by\\ (.+?)$",
+      "roles": [],
+      "sample_count": 80,
+      "sample_line": "Jul  1 04:05:17 combo su(pam_unix)[20298]: session opened for user cyrus by (uid=0)",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0d3c07e77b9cdc88",
+      "template": "Jul <*> <*> combo <*> session closed for user <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ session\\ closed\\ for\\ user\\ (.+?)$",
+      "roles": [],
+      "sample_count": 80,
+      "sample_line": "Jul  1 04:05:18 combo su(pam_unix)[20298]: session closed for user cyrus",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e7c5b6ab780e9173",
+      "template": "17/06/09 <*> INFO spark.CacheManager: Partition <*> not found computing it",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ spark\\.CacheManager:\\ Partition\\ (.+?)\\ not\\ found\\ computing\\ it$",
+      "roles": [],
+      "sample_count": 75,
+      "sample_line": "17/06/09 20:10:46 INFO spark.CacheManager: Partition rdd_2_1 not found, computing it",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "94975ee9da4d4e94",
+      "template": "03-17 <*> 2227 2227 I <*> <*> <*> <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 2227\\ 2227\\ I\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 73,
+      "sample_line": "03-17 16:13:38.928  2227  2227 I StackScrollAlgorithm: updateClipping isOverlap:false, getTopPadding=333.0, Translation=-24.0",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9c4c78151ccb9c78",
+      "template": "- <*> 2005.12.01 <*> <*> <*> RAS KERNEL INFO <*> total interrupts. 0 critical input interrupts. 0 microseconds total spent on critical input interrupts 0 microseconds max time in a critical input interrupt.",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.12\\.01\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ (.+?)\\ total\\ interrupts\\.\\ 0\\ critical\\ input\\ interrupts\\.\\ 0\\ microseconds\\ total\\ spent\\ on\\ critical\\ input\\ interrupts\\ 0\\ microseconds\\ max\\ time\\ in\\ a\\ critical\\ input\\ interrupt\\.$",
+      "roles": [],
+      "sample_count": 71,
+      "sample_line": "- 1133447728 2005.12.01 R06-M0-N3-C:J13-U11 2005-12-01-06.35.28.126758 R06-M0-N3-C:J13-U11 RAS KERNEL INFO 10722 total interrupts. 0 critical input interrupts. 0 microseconds total spent on critical i",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "020070f9d1c8f5f5",
+      "template": "Jul 4 23:22:09 calvisitor-10-105-162-105 Microsoft Word[14463]: Cocoa scripting error for <*> four character codes must be four characters long.",
+      "regex": "^Jul\\ 4\\ 23:22:09\\ calvisitor\\-10\\-105\\-162\\-105\\ Microsoft\\ Word\\[14463\\]:\\ Cocoa\\ scripting\\ error\\ for\\ (.+?)\\ four\\ character\\ codes\\ must\\ be\\ four\\ characters\\ long\\.$",
+      "roles": [],
+      "sample_count": 71,
+      "sample_line": "Jul  4 23:22:09 calvisitor-10-105-162-105 Microsoft Word[14463]: Cocoa scripting error for '0x00660011': four character codes must be four characters long.",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c6f486ee2c604551",
+      "template": "03-17 <*> 1702 <*> D PowerManagerService: userActivityNoUpdateLocked: <*> <*> <*> uid=1000",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ PowerManagerService:\\ userActivityNoUpdateLocked:\\ (.+?)\\ (.+?)\\ (.+?)\\ uid=1000$",
+      "roles": [],
+      "sample_count": 69,
+      "sample_line": "03-17 16:13:39.011  1702  2639 D PowerManagerService: userActivityNoUpdateLocked: eventTime=261843648, event=0, flags=0x1, uid=1000",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "2da877527846fda5",
+      "template": "[10.30 <*> <*> - proxy.cse.cuhk.edu.hk:5070 close <*> bytes <*> <*> <*> <*> <*> received lifetime <*>",
+      "regex": "^\\[10\\.30\\ (.+?)\\ (.+?)\\ \\-\\ proxy\\.cse\\.cuhk\\.edu\\.hk:5070\\ close\\ (.+?)\\ bytes\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 69,
+      "sample_line": "[10.30 16:49:09] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 850 bytes sent, 10547 bytes (10.2 KB) received, lifetime 00:02",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "4c0eac6643eb62bf",
+      "template": "Jul <*> <*> <*> kernel[0]: <*> - <*> = <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ (.+?)\\ \\-\\ (.+?)\\ =\\ (.+?)$",
+      "roles": [],
+      "sample_count": 67,
+      "sample_line": "Jul  1 09:19:03 calvisitor-10-105-160-95 kernel[0]: AppleCamIn::systemWakeCall - messageType = 0xE0000340",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a326fcbe2f6cef3d",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO <*> <*> <*> <*> - - -] <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 67,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:05.367 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Active base files: /var/lib/nova/instances/_b",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f89cc067616bb351",
+      "template": "03-17 <*> 1702 <*> D PowerManagerService: <*> suspend blocker \"PowerManagerService.WakeLocks\".",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ PowerManagerService:\\ (.+?)\\ suspend\\ blocker\\ \"PowerManagerService\\.WakeLocks\"\\.$",
+      "roles": [],
+      "sample_count": 66,
+      "sample_line": "03-17 16:13:41.481  1702 27357 D PowerManagerService: Releasing suspend blocker \"PowerManagerService.WakeLocks\".",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "2557f1c4d9ec1d8b",
+      "template": "2015-10-18 <*> <*> INFO [AsyncDispatcher event handler] <*> <*> <*> Transitioned from <*> to <*>",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[AsyncDispatcher\\ event\\ handler\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ Transitioned\\ from\\ (.+?)\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 64,
+      "sample_line": "2015-10-18 18:01:53,869 INFO [AsyncDispatcher event handler] org.apache.hadoop.mapreduce.v2.app.job.impl.TaskImpl: task_1445144423722_0020_m_000000 Task Transitioned from NEW to SCHEDULED",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b251f2b45ab43a1f",
+      "template": "- <*> 2005.11.09 tbird-sm1 Nov 9 <*> src@tbird-sm1 ib_sm.x[24904]: [ib_sm_sweep.c:1455]: No topology change",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-sm1\\ Nov\\ 9\\ (.+?)\\ src@tbird\\-sm1\\ ib_sm\\.x\\[24904\\]:\\ \\[ib_sm_sweep\\.c:1455\\]:\\ No\\ topology\\ change$",
+      "roles": [],
+      "sample_count": 62,
+      "sample_line": "- 1131566474 2005.11.09 tbird-sm1 Nov 9 12:01:14 src@tbird-sm1 ib_sm.x[24904]: [ib_sm_sweep.c:1455]: No topology change",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "4bd2049f580b0cbf",
+      "template": "KERNDTLB <*> 2005.06.11 R30-M0-N9-C:J16-U01 <*> R30-M0-N9-C:J16-U01 RAS KERNEL FATAL data TLB error interrupt",
+      "regex": "^KERNDTLB\\ (.+?)\\ 2005\\.06\\.11\\ R30\\-M0\\-N9\\-C:J16\\-U01\\ (.+?)\\ R30\\-M0\\-N9\\-C:J16\\-U01\\ RAS\\ KERNEL\\ FATAL\\ data\\ TLB\\ error\\ interrupt$",
+      "roles": [],
+      "sample_count": 60,
+      "sample_line": "KERNDTLB 1118536327 2005.06.11 R30-M0-N9-C:J16-U01 2005-06-11-17.32.07.581048 R30-M0-N9-C:J16-U01 RAS KERNEL FATAL data TLB error interrupt",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5dc419904bc3ed6b",
+      "template": "<*> <*> <*> - <*> close <*> bytes <*> <*> <*> <*> <*> received lifetime <1 sec",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ received\\ lifetime\\ <1\\ sec$",
+      "roles": [],
+      "sample_count": 60,
+      "sample_line": "[10.30 16:49:07] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 451 bytes sent, 18846 bytes (18.4 KB) received, lifetime <1 sec",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "cbf764865d35f031",
+      "template": "<*> <*> <*> status <*> 1 not responding",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ status\\ (.+?)\\ 1\\ not\\ responding$",
+      "roles": [],
+      "sample_count": 57,
+      "sample_line": "2567354 node-147 node status 1074098611 1 not responding",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b7940fa82e144e22",
+      "template": "<*> <*> switch_module error <*> 1 link errors remain current",
+      "regex": "^(.+?)\\ (.+?)\\ switch_module\\ error\\ (.+?)\\ 1\\ link\\ errors\\ remain\\ current$",
+      "roles": [],
+      "sample_count": 56,
+      "sample_line": "207120 Interconnect-0N02 switch_module error 1116534650 1 link errors remain current",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "fda1ee77c4b4492a",
+      "template": "<*> <*> <*> - <*> close <*> bytes sent <*> bytes <*> KB) received lifetime <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ close\\ (.+?)\\ bytes\\ sent\\ (.+?)\\ bytes\\ (.+?)\\ KB\\)\\ received\\ lifetime\\ (.+?)$",
+      "roles": [],
+      "sample_count": 54,
+      "sample_line": "[10.30 17:48:45] QQ.exe - qqmail.tencent.com:80 close, 336 bytes sent, 2854 bytes (2.78 KB) received, lifetime 00:01",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "096afc7dcc11bcb7",
+      "template": "- <*> 2005.11.09 tbird-admin1 Nov 9 <*> local@tbird-admin1 <*> <*> <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-admin1\\ Nov\\ 9\\ (.+?)\\ local@tbird\\-admin1\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 53,
+      "sample_line": "- 1131566665 2005.11.09 tbird-admin1 Nov 9 12:04:25 local@tbird-admin1 ntpd[1815]: time reset +0.182379 s",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ed221171c6be5349",
+      "template": "- <*> 2005.12.01 <*> <*> <*> RAS KERNEL INFO 0 microseconds spent in the rbs signal handler during 0 calls. 0 microseconds was the maximum time for a single instance of a correctable ddr.",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.12\\.01\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ 0\\ microseconds\\ spent\\ in\\ the\\ rbs\\ signal\\ handler\\ during\\ 0\\ calls\\.\\ 0\\ microseconds\\ was\\ the\\ maximum\\ time\\ for\\ a\\ single\\ instance\\ of\\ a\\ correctable\\ ddr\\.$",
+      "roles": [],
+      "sample_count": 51,
+      "sample_line": "- 1133447694 2005.12.01 R11-M1-ND-C:J08-U01 2005-12-01-06.34.54.203650 R11-M1-ND-C:J08-U01 RAS KERNEL INFO 0 microseconds spent in the rbs signal handler during 0 calls. 0 microseconds was the maximum",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "facb450384d0efdf",
+      "template": "<*> full partition status <*> <*> <*>",
+      "regex": "^(.+?)\\ full\\ partition\\ status\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 46,
+      "sample_line": "2286759 full partition status 1061219795 -1 running",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "52ac44bfaba25f97",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO <*> <*> <*> <*> - - -] [instance: <*> <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ \\-\\ \\-\\ \\-\\]\\ \\[instance:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 46,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:04.500 2931 INFO nova.compute.manager [req-3ea4052c-895d-4b64-9e2d-04d64c4d94ab - - - - -] [instance: b9000564-fe1a-409b-b8cc-1e88b294cd1d] VM S",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "93d7f7aea704c6e2",
+      "template": "Dec 10 <*> LabSZ <*> error: Received disconnect from 103.99.0.122: 14: No more user authentication methods available. [preauth]",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ error:\\ Received\\ disconnect\\ from\\ 103\\.99\\.0\\.122:\\ 14:\\ No\\ more\\ user\\ authentication\\ methods\\ available\\.\\ \\[preauth\\]$",
+      "roles": [],
+      "sample_count": 45,
+      "sample_line": "Dec 10 09:11:22 LabSZ sshd[24439]: error: Received disconnect from 103.99.0.122: 14: No more user authentication methods available. [preauth]",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "886159777aa3d4ae",
+      "template": "17/06/09 <*> INFO rdd.HadoopRDD: Input split: <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ rdd\\.HadoopRDD:\\ Input\\ split:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 45,
+      "sample_line": "17/06/09 20:10:46 INFO rdd.HadoopRDD: Input split: hdfs://10.10.34.11:9000/pjhe/logs/2kSOSP.log:21876+7292",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c03c6b45322867ff",
+      "template": "Jul <*> <*> <*> <*> dnssd_clientstub ConnectToServer: connect()-> No of tries: <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ dnssd_clientstub\\ ConnectToServer:\\ connect\\(\\)\\->\\ No\\ of\\ tries:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 44,
+      "sample_line": "Jul  1 11:51:25 calvisitor-10-105-160-95 com.apple.AddressBook.InternetAccountsBridge[31496]: dnssd_clientstub ConnectToServer: connect()-> No of tries: 1",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "7e510f092b25d760",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.virt.libvirt.driver [-] [instance: <*> Instance <*> successfully.",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.virt\\.libvirt\\.driver\\ \\[\\-\\]\\ \\[instance:\\ (.+?)\\ Instance\\ (.+?)\\ successfully\\.$",
+      "roles": [],
+      "sample_count": 44,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:10.302 2931 INFO nova.virt.libvirt.driver [-] [instance: b9000564-fe1a-409b-b8cc-1e88b294cd1d] Instance spawned successfully.",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c6d9ea8f5f79cb8d",
+      "template": "Jun <*> <*> combo <*> session opened for user <*> by <*>",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ session\\ opened\\ for\\ user\\ (.+?)\\ by\\ (.+?)$",
+      "roles": [],
+      "sample_count": 43,
+      "sample_line": "Jun 15 04:06:18 combo su(pam_unix)[21416]: session opened for user cyrus by (uid=0)",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e606863d56171682",
+      "template": "Jun <*> <*> combo <*> session closed for user <*>",
+      "regex": "^Jun\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ session\\ closed\\ for\\ user\\ (.+?)$",
+      "roles": [],
+      "sample_count": 43,
+      "sample_line": "Jun 15 04:06:19 combo su(pam_unix)[21416]: session closed for user cyrus",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "460b6c5463e8dc1b",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO instruction cache parity error corrected",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ instruction\\ cache\\ parity\\ error\\ corrected$",
+      "roles": [],
+      "sample_count": 42,
+      "sample_line": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.675872 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction cache parity error corrected",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f3ed9d90350bdd82",
+      "template": "2016-09-28 04:30:31 Info CBS <*> <*> <*> <*>",
+      "regex": "^2016\\-09\\-28\\ 04:30:31\\ Info\\ CBS\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 41,
+      "sample_line": "2016-09-28 04:30:31, Info                  CBS    TrustedInstaller service starts successfully.",
+      "learned_from_source": "25_windows_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ff6c145487e3c2c3",
+      "template": "Jul <*> <*> <*> <*> Thermal pressure state: <*> Memory pressure state: 0",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ Thermal\\ pressure\\ state:\\ (.+?)\\ Memory\\ pressure\\ state:\\ 0$",
+      "roles": [],
+      "sample_count": 39,
+      "sample_line": "Jul  1 09:01:05 calvisitor-10-105-160-95 com.apple.CDScheduler[43]: Thermal pressure state: 1 Memory pressure state: 0",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "82b8b57d5243e421",
+      "template": "03-17 <*> 2626 <*> W PhoneInterfaceManager: shouldBlockLocation running ...",
+      "regex": "^03\\-17\\ (.+?)\\ 2626\\ (.+?)\\ W\\ PhoneInterfaceManager:\\ shouldBlockLocation\\ running\\ \\.\\.\\.$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "03-17 16:13:40.241  2626  8682 W PhoneInterfaceManager: shouldBlockLocation running ...",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "7d30125798eb7d60",
+      "template": "03-17 <*> 2626 <*> I PhoneInterfaceManager: shouldBlockLocation <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 2626\\ (.+?)\\ I\\ PhoneInterfaceManager:\\ shouldBlockLocation\\ (.+?)$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "03-17 16:13:40.241  2626  8682 I PhoneInterfaceManager: shouldBlockLocation  ret:false",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d3dbd20d586b40f3",
+      "template": "2015-10-18 <*> <*> INFO [AsyncDispatcher event handler] <*> <*> <*> <*> <*>",
+      "regex": "^2015\\-10\\-18\\ (.+?)\\ (.+?)\\ INFO\\ \\[AsyncDispatcher\\ event\\ handler\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "2015-10-18 18:01:53,838 INFO [AsyncDispatcher event handler] org.apache.hadoop.yarn.util.RackResolver: Resolved MSRA-SA-39.fareast.corp.microsoft.com to /default-rack",
+      "learned_from_source": "14_hadoop_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9ace8659a65bd47a",
+      "template": "Jul <*> <*> <*> locationd[82]: Location icon should now be in state <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ locationd\\[82\\]:\\ Location\\ icon\\ should\\ now\\ be\\ in\\ state\\ (.+?)$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "Jul  1 11:29:32 calvisitor-10-105-160-95 locationd[82]: Location icon should now be in state 'Inactive'",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a42a85642e745151",
+      "template": "17/06/09 <*> INFO broadcast.TorrentBroadcast: Started reading broadcast variable <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ broadcast\\.TorrentBroadcast:\\ Started\\ reading\\ broadcast\\ variable\\ (.+?)$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "17/06/09 20:10:45 INFO broadcast.TorrentBroadcast: Started reading broadcast variable 9",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "3cf60692b894e2c3",
+      "template": "17/06/09 <*> INFO broadcast.TorrentBroadcast: Reading broadcast variable <*> took <*> ms",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ broadcast\\.TorrentBroadcast:\\ Reading\\ broadcast\\ variable\\ (.+?)\\ took\\ (.+?)\\ ms$",
+      "roles": [],
+      "sample_count": 37,
+      "sample_line": "17/06/09 20:10:45 INFO broadcast.TorrentBroadcast: Reading broadcast variable 9 took 160 ms",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "6f9acbdb46dafb3e",
+      "template": "<*> <*> clusterfilesystem clusterfilesystem.not_served <*> 1 ClusterFileSystem: ServerFileSystem domain <*> is no longer served by node <*>",
+      "regex": "^(.+?)\\ (.+?)\\ clusterfilesystem\\ clusterfilesystem\\.not_served\\ (.+?)\\ 1\\ ClusterFileSystem:\\ ServerFileSystem\\ domain\\ (.+?)\\ is\\ no\\ longer\\ served\\ by\\ node\\ (.+?)$",
+      "roles": [],
+      "sample_count": 36,
+      "sample_line": "2558879 node-D3 clusterfilesystem clusterfilesystem.not_served 1073126274 1 ClusterFileSystem: ServerFileSystem domain cluster_root_backup is no longer served by node node-96",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a2b69c9037f6cf66",
+      "template": "Jul <*> <*> <*> kernel[0]: IOThunderboltSwitch<0>(0x0)::listenerCallback - Thunderbolt HPD packet for route = 0x0 port = <*> unplug = 0",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ IOThunderboltSwitch<0>\\(0x0\\)::listenerCallback\\ \\-\\ Thunderbolt\\ HPD\\ packet\\ for\\ route\\ =\\ 0x0\\ port\\ =\\ (.+?)\\ unplug\\ =\\ 0$",
+      "roles": [],
+      "sample_count": 36,
+      "sample_line": "Jul  1 09:00:55 calvisitor-10-105-160-95 kernel[0]: IOThunderboltSwitch<0>(0x0)::listenerCallback - Thunderbolt HPD packet for route = 0x0 port = 11 unplug = 0",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "09e3cb1fea138371",
+      "template": "03-17 <*> <*> <*> V AudioManager: <*>",
+      "regex": "^03\\-17\\ (.+?)\\ (.+?)\\ (.+?)\\ V\\ AudioManager:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 35,
+      "sample_line": "03-17 16:13:45.362  2227  2318 V AudioManager: querySoundEffectsEnabled...",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "52880244450bb72b",
+      "template": "- <*> <*> NULL <*> NULL RAS MMCS ERROR idoproxydb hit ASSERT condition: ASSERT expression=0 Source file=idotransportmgr.cpp Source line=1043 Function=int IdoTransportMgr::SendPacket(IdoUdpMgr* BglCtlPavTrace*)",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ NULL\\ (.+?)\\ NULL\\ RAS\\ MMCS\\ ERROR\\ idoproxydb\\ hit\\ ASSERT\\ condition:\\ ASSERT\\ expression=0\\ Source\\ file=idotransportmgr\\.cpp\\ Source\\ line=1043\\ Function=int\\ IdoTransportMgr::SendPacket\\(IdoUdpMgr\\*\\ BglCtlPavTrace\\*\\)$",
+      "roles": [],
+      "sample_count": 35,
+      "sample_line": "- 1123110662 2005.08.03 NULL 2005-08-03-16.11.02.839771 NULL RAS MMCS ERROR idoproxydb hit ASSERT condition: ASSERT expression=0 Source file=idotransportmgr.cpp Source line=1043 Function=int IdoTransp",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0bd6db1ad2c55a42",
+      "template": "Jul <*> <*> combo <*> check pass; user unknown",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ check\\ pass;\\ user\\ unknown$",
+      "roles": [],
+      "sample_count": 35,
+      "sample_line": "Jul  2 04:15:33 combo sshd(pam_unix)[24588]: check pass; user unknown",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5eb5fd37c96c2300",
+      "template": "Jul <*> <*> combo <*> authentication failure; logname= uid=0 euid=0 <*> ruser= <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ (.+?)\\ authentication\\ failure;\\ logname=\\ uid=0\\ euid=0\\ (.+?)\\ ruser=\\ (.+?)$",
+      "roles": [],
+      "sample_count": 35,
+      "sample_line": "Jul  2 04:15:33 combo sshd(pam_unix)[24588]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=zummit.com",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "66856d845e2ac308",
+      "template": "<*> Step_StandReportReceiver 30002312 onReceive action: <*>",
+      "regex": "^(.+?)\\ Step_StandReportReceiver\\ 30002312\\ onReceive\\ action:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 34,
+      "sample_line": "20171223-22:15:29:633|Step_StandReportReceiver|30002312|onReceive action: android.intent.action.SCREEN_ON",
+      "learned_from_source": "16_healthapp_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9b9b089f162e0882",
+      "template": "03-17 <*> 1702 <*> I NotificationManager: <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ I\\ NotificationManager:\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 33,
+      "sample_line": "03-17 16:13:46.671  1702 17633 I NotificationManager: onNotificationVisibilityChanged called",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "58c19c9e119d34a9",
+      "template": "Dec 10 <*> LabSZ <*> Connection closed by <*> [preauth]",
+      "regex": "^Dec\\ 10\\ (.+?)\\ LabSZ\\ (.+?)\\ Connection\\ closed\\ by\\ (.+?)\\ \\[preauth\\]$",
+      "roles": [],
+      "sample_count": 33,
+      "sample_line": "Dec 10 07:02:47 LabSZ sshd[24203]: Connection closed by 212.47.254.145 [preauth]",
+      "learned_from_source": "20_openssh_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0b8a6ccf6bc566b7",
+      "template": "- <*> 2005.11.09 tbird-admin1 Nov 9 <*> local@tbird-admin1 <*> <*> <*> <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-admin1\\ Nov\\ 9\\ (.+?)\\ local@tbird\\-admin1\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 33,
+      "sample_line": "- 1131566665 2005.11.09 tbird-admin1 Nov 9 12:04:25 local@tbird-admin1 ntpd[1815]: kernel time sync disabled 0041",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b6aca689e05f1f38",
+      "template": "<*> <*> clusterfilesystem clusterfilesystem.no_server <*> 1 ClusterFileSystem: There is no server for ServerFileSystem domain <*>",
+      "regex": "^(.+?)\\ (.+?)\\ clusterfilesystem\\ clusterfilesystem\\.no_server\\ (.+?)\\ 1\\ ClusterFileSystem:\\ There\\ is\\ no\\ server\\ for\\ ServerFileSystem\\ domain\\ (.+?)$",
+      "roles": [],
+      "sample_count": 32,
+      "sample_line": "2594656 node-D0 clusterfilesystem clusterfilesystem.no_server 1074279038 1 ClusterFileSystem: There is no server for ServerFileSystem domain storage234",
+      "learned_from_source": "17_hpc_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "da8fcdc97065df82",
+      "template": "Jul <*> <*> <*> kernel[0]: ARPT: <*> wl0: MDNS: <*> Addr: <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ ARPT:\\ (.+?)\\ wl0:\\ MDNS:\\ (.+?)\\ Addr:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 32,
+      "sample_line": "Jul  1 09:29:25 calvisitor-10-105-160-95 kernel[0]: ARPT: 621241.634070: wl0: MDNS: IPV6 Addr: 2607:f140:6000:8:c6b3:1ff:fecd:467f",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "44e1860bae46a8da",
+      "template": "Jul <*> <*> <*> <*> CCFile::captureLogRun Skipping current file Dir file <*> <*> <*> Current File <*> <*> <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ CCFile::captureLogRun\\ Skipping\\ current\\ file\\ Dir\\ file\\ (.+?)\\ (.+?)\\ (.+?)\\ Current\\ File\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 31,
+      "sample_line": "Jul  3 13:48:39 calvisitor-10-105-160-237 corecaptured[33452]: CCFile::captureLogRun Skipping current file Dir file [2017-07-03_13,48,39.362458]-CCIOReporter-002.xml, Current File [2017-07-03_13,48,39",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "dfbf3f8ef02a172f",
+      "template": "KERNSTOR <*> <*> <*> <*> <*> RAS KERNEL FATAL data storage interrupt",
+      "regex": "^KERNSTOR\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ FATAL\\ data\\ storage\\ interrupt$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "KERNSTOR 1118709403 2005.06.13 R10-M1-N5-C:J15-U11 2005-06-13-17.36.43.927885 R10-M1-N5-C:J15-U11 RAS KERNEL FATAL data storage interrupt",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a0e9d172c826f06a",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL INFO ciod: generated <*> core files for program <*>",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ INFO\\ ciod:\\ generated\\ (.+?)\\ core\\ files\\ for\\ program\\ (.+?)$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "- 1124394179 2005.08.18 R30-M0-N0-I:J18-U01 2005-08-18-12.42.59.378202 R30-M0-N0-I:J18-U01 RAS KERNEL INFO ciod: generated 64 core files for program /bgl/apps/swl-prep/ibm-swl/functional/sppm_chkpt/ru",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "1cf86267117aef58",
+      "template": "Jul <*> <*> <*> kernel[0]: en0: <*> changed to <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ en0:\\ (.+?)\\ changed\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "Jul  1 10:08:20 calvisitor-10-105-160-95 kernel[0]: en0: channel changed to 1",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "8fed595eabacd04c",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.resource_tracker [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*> <*> <*> <*>",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.resource_tracker\\ \\[req\\-addc1839\\-2ed5\\-4778\\-b57e\\-5854eb7b8b09\\ \\-\\ \\-\\ \\-\\ \\-\\ \\-\\]\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:13.658 2931 INFO nova.compute.resource_tracker [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Auditing locally available compute resources",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b9acb8aea2c26797",
+      "template": "17/06/09 <*> INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ output\\.FileOutputCommitter:\\ File\\ Output\\ Committer\\ Algorithm\\ version\\ is\\ 1$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "17/06/09 20:10:57 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 1",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "362a692733f69312",
+      "template": "17/06/09 <*> INFO output.FileOutputCommitter: Saved output of task <*> to <*>",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ output\\.FileOutputCommitter:\\ Saved\\ output\\ of\\ task\\ (.+?)\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "17/06/09 20:10:57 INFO output.FileOutputCommitter: Saved output of task 'attempt_201706092018_0024_m_000003_1012' to hdfs://10.10.34.11:9000/pjhe/test/1/_temporary/0/task_201706092018_0024_m_000003",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "25a5f9c4073540ec",
+      "template": "17/06/09 <*> INFO mapred.SparkHadoopMapRedUtil: <*> Committed",
+      "regex": "^17/06/09\\ (.+?)\\ INFO\\ mapred\\.SparkHadoopMapRedUtil:\\ (.+?)\\ Committed$",
+      "roles": [],
+      "sample_count": 30,
+      "sample_line": "17/06/09 20:10:57 INFO mapred.SparkHadoopMapRedUtil: attempt_201706092018_0024_m_000004_1026: Committed",
+      "learned_from_source": "23_spark_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "6ed48c54fcd0d5aa",
+      "template": "03-17 <*> 1702 <*> D ActivityManager: Skipping withExcluded: false tr.intent:Intent { <*> <*> <*> <*> <*> }",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ ActivityManager:\\ Skipping\\ withExcluded:\\ false\\ tr\\.intent:Intent\\ \\{\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ \\}$",
+      "roles": [],
+      "sample_count": 28,
+      "sample_line": "03-17 16:13:47.517  1702  8671 D ActivityManager: Skipping, withExcluded: false, tr.intent:Intent { flg=0x10804000 cmp=com.android.systemui/.recents.RecentsActivity bnds=[264,444][920,908] }",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "24e24665d0398216",
+      "template": "- <*> <*> <*> <*> <*> RAS KERNEL FATAL <*> address: <*>",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ FATAL\\ (.+?)\\ address:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 28,
+      "sample_line": "- 1118709955 2005.06.13 R10-M0-N1-C:J17-U11 2005-06-13-17.45.55.674418 R10-M0-N1-C:J17-U11 RAS KERNEL FATAL instruction address: 0x00004ed8",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b17225b8b1903ac6",
+      "template": "Jul <*> <*> combo logrotate: ALERT exited abnormally with [1]",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ combo\\ logrotate:\\ ALERT\\ exited\\ abnormally\\ with\\ \\[1\\]$",
+      "roles": [],
+      "sample_count": 27,
+      "sample_line": "Jul  1 04:05:19 combo logrotate: ALERT exited abnormally with [1]",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c9f73cbe866cf8c6",
+      "template": "- <*> 2005.06.14 <*> <*> <*> RAS KERNEL FATAL <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.06\\.14\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ KERNEL\\ FATAL\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 26,
+      "sample_line": "- 1118767283 2005.06.14 R20-M1-N3-C:J14-U01 2005-06-14-09.41.23.815131 R20-M1-N3-C:J14-U01 RAS KERNEL FATAL machine check: i-fetch......................0",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "064c6ab2b4c1f817",
+      "template": "Jul <*> <*> <*> WindowServer[184]: send_datagram_available_ping: pid 445 failed to act on a ping it dequeued before timing out.",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ WindowServer\\[184\\]:\\ send_datagram_available_ping:\\ pid\\ 445\\ failed\\ to\\ act\\ on\\ a\\ ping\\ it\\ dequeued\\ before\\ timing\\ out\\.$",
+      "roles": [],
+      "sample_count": 26,
+      "sample_line": "Jul  1 21:03:00 calvisitor-10-105-163-202 WindowServer[184]: send_datagram_available_ping: pid 445 failed to act on a ping it dequeued before timing out.",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ee8a0b799e92e482",
+      "template": "<*> <*> <*> - <*> error : A connection request was canceled before the completion.",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ error\\ :\\ A\\ connection\\ request\\ was\\ canceled\\ before\\ the\\ completion\\.$",
+      "roles": [],
+      "sample_count": 26,
+      "sample_line": "[10.30 17:15:42] QQ.exe - tcpconn6.tencent.com:443 error : A connection request was canceled before the completion.",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "b20083c18395ed70",
+      "template": "<*> <*> chrome.exe *64 - <*> error : Could not connect to proxy proxy.cse.cuhk.edu.hk:5070 - <*> <*> <*> <*> error <*>",
+      "regex": "^(.+?)\\ (.+?)\\ chrome\\.exe\\ \\*64\\ \\-\\ (.+?)\\ error\\ :\\ Could\\ not\\ connect\\ to\\ proxy\\ proxy\\.cse\\.cuhk\\.edu\\.hk:5070\\ \\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ error\\ (.+?)$",
+      "roles": [],
+      "sample_count": 26,
+      "sample_line": "[07.26 17:23:54] chrome.exe *64 - mtalk.google.com:5228 error : Could not connect to proxy proxy.cse.cuhk.edu.hk:5070 - Could not resolve proxy.cse.cuhk.edu.hk error 11001",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c046c8ba9dc818f1",
+      "template": "03-17 <*> 1702 <*> D PowerManagerService: acquire <*> flags=0x1 <*> <*> <*> <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ PowerManagerService:\\ acquire\\ (.+?)\\ flags=0x1\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 25,
+      "sample_line": "03-17 16:13:40.142  1702  2618 D PowerManagerService: acquire lock=166121161, flags=0x1, tag=\"RILJ_ACK_WL\", name=com.android.phone, ws=null, uid=1001, pid=2626",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a82cb1004eac8b47",
+      "template": "[10.30 <*> chrome.exe - proxy.cse.cuhk.edu.hk:5070 close <*> bytes <*> KB) sent <*> bytes <*> KB) received lifetime <1 sec",
+      "regex": "^\\[10\\.30\\ (.+?)\\ chrome\\.exe\\ \\-\\ proxy\\.cse\\.cuhk\\.edu\\.hk:5070\\ close\\ (.+?)\\ bytes\\ (.+?)\\ KB\\)\\ sent\\ (.+?)\\ bytes\\ (.+?)\\ KB\\)\\ received\\ lifetime\\ <1\\ sec$",
+      "roles": [],
+      "sample_count": 25,
+      "sample_line": "[10.30 16:49:10] chrome.exe - proxy.cse.cuhk.edu.hk:5070 close, 1268 bytes (1.23 KB) sent, 6274 bytes (6.12 KB) received, lifetime <1 sec",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "9e556ff51c1937f5",
+      "template": "03-17 <*> 1702 <*> I WindowManager: Destroying surface <*> called by com.android.server.wm.WindowStateAnimator.destroySurface:2060 com.android.server.wm.WindowStateAnimator.destroySurfaceLocked:913 <*> <*> <*> <*> <*> <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ I\\ WindowManager:\\ Destroying\\ surface\\ (.+?)\\ called\\ by\\ com\\.android\\.server\\.wm\\.WindowStateAnimator\\.destroySurface:2060\\ com\\.android\\.server\\.wm\\.WindowStateAnimator\\.destroySurfaceLocked:913\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 24,
+      "sample_line": "03-17 16:13:39.006  1702  2639 I WindowManager: Destroying surface Surface(name=com.tencent.qt.qtl/com.tencent.video.player.activity.PlayerActivity) called by com.android.server.wm.WindowStateAnimator",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "241e81c3d2250f3f",
+      "template": "- <*> 2005.11.09 <*> Nov 9 <*> <*> <*> session closed for user root",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ (.+?)\\ Nov\\ 9\\ (.+?)\\ (.+?)\\ (.+?)\\ session\\ closed\\ for\\ user\\ root$",
+      "roles": [],
+      "sample_count": 24,
+      "sample_line": "- 1131566461 2005.11.09 dn228 Nov 9 12:01:01 dn228/dn228 crond(pam_unix)[2915]: session closed for user root",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0562805586c6bb85",
+      "template": "Jun 30 <*> combo <*> Kerberos authentication failed",
+      "regex": "^Jun\\ 30\\ (.+?)\\ combo\\ (.+?)\\ Kerberos\\ authentication\\ failed$",
+      "roles": [],
+      "sample_count": 23,
+      "sample_line": "Jun 30 20:53:04 combo klogind[19272]: Kerberos authentication failed",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "13a5bb04790f6209",
+      "template": "Jul <*> <*> <*> com.apple.WebKit.WebContent[32778]: <*> <<<< Boss >>>> figPlaybackBossPrerollCompleted: unexpected preroll-complete notification",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ com\\.apple\\.WebKit\\.WebContent\\[32778\\]:\\ (.+?)\\ <<<<\\ Boss\\ >>>>\\ figPlaybackBossPrerollCompleted:\\ unexpected\\ preroll\\-complete\\ notification$",
+      "roles": [],
+      "sample_count": 23,
+      "sample_line": "Jul  2 22:32:34 authorMacBook-Pro com.apple.WebKit.WebContent[32778]: [22:32:34.846] <<<< Boss >>>> figPlaybackBossPrerollCompleted: unexpected preroll-complete notification",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "a94cd08fb0df8907",
+      "template": "- <*> 2005.11.09 tbird-admin1 Nov 9 <*> local@tbird-admin1 <*> <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-admin1\\ Nov\\ 9\\ (.+?)\\ local@tbird\\-admin1\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 23,
+      "sample_line": "- 1131567043 2005.11.09 tbird-admin1 Nov 9 12:10:43 local@tbird-admin1 ACPI: Subsystem revision 20040816",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "dd624a5d0dcba936",
+      "template": "Jul 27 <*> combo kernel: <*> <*> <*> <*> <*>",
+      "regex": "^Jul\\ 27\\ (.+?)\\ combo\\ kernel:\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "Jul 27 14:41:57 combo kernel:  BIOS-e820: 0000000000000000 - 00000000000a0000 (usable)",
+      "learned_from_source": "18_linux_syslog_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0273870745d8e0ee",
+      "template": "Jul <*> <*> <*> <*> CCFile::captureLogRun() Exiting CCFile::captureLogRun",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ CCFile::captureLogRun\\(\\)\\ Exiting\\ CCFile::captureLogRun$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "Jul  1 09:28:41 authorMacBook-Pro corecaptured[31206]: CCFile::captureLogRun() Exiting CCFile::captureLogRun",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "510feb1cef10e728",
+      "template": "Jul <*> <*> <*> kernel[0]: AppleThunderboltGenericHAL::earlyWake - complete - took <*> milliseconds",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ AppleThunderboltGenericHAL::earlyWake\\ \\-\\ complete\\ \\-\\ took\\ (.+?)\\ milliseconds$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "Jul  1 09:34:42 calvisitor-10-105-160-95 kernel[0]: AppleThunderboltGenericHAL::earlyWake - complete - took 0 milliseconds",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "916986db5a35d2f5",
+      "template": "Jul <*> <*> <*> kernel[0]: ARPT: <*> AirPort_Brcm43xx::platformWoWEnable: <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ ARPT:\\ (.+?)\\ AirPort_Brcm43xx::platformWoWEnable:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "Jul  2 13:03:10 authorMacBook-Pro kernel[0]: ARPT: 646193.687729: AirPort_Brcm43xx::platformWoWEnable: WWEN[disable]",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "1eb739f5cdf6c884",
+      "template": "Jul <*> <*> <*> kernel[0]: Sandbox: <*> deny(1) <*> <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ Sandbox:\\ (.+?)\\ deny\\(1\\)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "Jul  4 03:38:55 airbears2-10-142-110-255 kernel[0]: Sandbox: com.apple.Addres(34268) deny(1) network-outbound /private/var/run/mDNSResponder",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "8d2998da5df36af9",
+      "template": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 <*> 25743 INFO nova.api.openstack.compute.server_external_events <*> f7b8d1f1d4d44643b07fa10ca7d021fb e9746973ac574c6b8a9e8857f56a7608 - - -] Creating event <*> for instance <*>",
+      "regex": "^nova\\-api\\.log\\.1\\.2017\\-05\\-16_13:53:08\\ 2017\\-05\\-16\\ (.+?)\\ 25743\\ INFO\\ nova\\.api\\.openstack\\.compute\\.server_external_events\\ (.+?)\\ f7b8d1f1d4d44643b07fa10ca7d021fb\\ e9746973ac574c6b8a9e8857f56a7608\\ \\-\\ \\-\\ \\-\\]\\ Creating\\ event\\ (.+?)\\ for\\ instance\\ (.+?)$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:10.279 25743 INFO nova.api.openstack.compute.server_external_events [req-ab451068-9756-4ad9-9d18-5ceaa6424627 f7b8d1f1d4d44643b07fa10ca7d021fb e9746",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "aed5d6bda4f05ed6",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.manager <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Took <*> seconds to build instance.",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.manager\\ (.+?)\\ 113d3a99c3da401fbd62cc2caa5b96d2\\ 54fadb412c4e40cdbaed9335e4c35a9e\\ \\-\\ \\-\\ \\-\\]\\ \\[instance:\\ (.+?)\\ Took\\ (.+?)\\ seconds\\ to\\ build\\ instance\\.$",
+      "roles": [],
+      "sample_count": 22,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:10.470 2931 INFO nova.compute.manager [req-8e64797b-fb99-4c8a-87e5-9a8de673412f 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "d70ded6b5fb5a55c",
+      "template": "03-17 <*> 1702 <*> D ActivityManager: Skipping withExcluded: false tr.intent:Intent { <*> <*> (has extras) }",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ D\\ ActivityManager:\\ Skipping\\ withExcluded:\\ false\\ tr\\.intent:Intent\\ \\{\\ (.+?)\\ (.+?)\\ \\(has\\ extras\\)\\ \\}$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "03-17 16:13:47.517  1702  8671 D ActivityManager: Skipping, withExcluded: false, tr.intent:Intent { flg=0x18800000 cmp=com.tencent.mm/.plugin.base.stub.WXEntryActivity (has extras) }",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "69403dd5c373c1cf",
+      "template": "- <*> <*> <*> <*> <*> RAS APP FATAL ciod: Error loading <*> invalid or missing program image No such file or directory",
+      "regex": "^\\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ RAS\\ APP\\ FATAL\\ ciod:\\ Error\\ loading\\ (.+?)\\ invalid\\ or\\ missing\\ program\\ image\\ No\\ such\\ file\\ or\\ directory$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "- 1119309833 2005.06.20 R14-M1-N0-I:J18-U01 2005-06-20-16.23.53.944371 R14-M1-N0-I:J18-U01 RAS APP FATAL ciod: Error loading /home/draeger/testQboxhang-nozerobytebug-nosleepyescomm: invalid or missing",
+      "learned_from_source": "13_bgl_supercomputer_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "5294d75c7cbd9b04",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.manager <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Took <*> seconds to deallocate network for instance.",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.manager\\ (.+?)\\ 113d3a99c3da401fbd62cc2caa5b96d2\\ 54fadb412c4e40cdbaed9335e4c35a9e\\ \\-\\ \\-\\ \\-\\]\\ \\[instance:\\ (.+?)\\ Took\\ (.+?)\\ seconds\\ to\\ deallocate\\ network\\ for\\ instance\\.$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:19.050 2931 INFO nova.compute.manager [req-c53a921a-16c7-422e-8c9d-c922a720d047 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c0f2751ae81215c2",
+      "template": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 <*> 25746 INFO nova.api.openstack.wsgi <*> f7b8d1f1d4d44643b07fa10ca7d021fb e9746973ac574c6b8a9e8857f56a7608 - - -] HTTP exception thrown: No instances found for any event",
+      "regex": "^nova\\-api\\.log\\.1\\.2017\\-05\\-16_13:53:08\\ 2017\\-05\\-16\\ (.+?)\\ 25746\\ INFO\\ nova\\.api\\.openstack\\.wsgi\\ (.+?)\\ f7b8d1f1d4d44643b07fa10ca7d021fb\\ e9746973ac574c6b8a9e8857f56a7608\\ \\-\\ \\-\\ \\-\\]\\ HTTP\\ exception\\ thrown:\\ No\\ instances\\ found\\ for\\ any\\ event$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:21.067 25746 INFO nova.api.openstack.wsgi [req-0b851395-2895-44b9-8265-a27d0bb52910 f7b8d1f1d4d44643b07fa10ca7d021fb e9746973ac574c6b8a9e8857f56a760",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "f18ea100001f76cb",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.claims <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Attempting claim: memory 2048 MB disk 20 GB vcpus 1 CPU",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.claims\\ (.+?)\\ 113d3a99c3da401fbd62cc2caa5b96d2\\ 54fadb412c4e40cdbaed9335e4c35a9e\\ \\-\\ \\-\\ \\-\\]\\ \\[instance:\\ (.+?)\\ Attempting\\ claim:\\ memory\\ 2048\\ MB\\ disk\\ 20\\ GB\\ vcpus\\ 1\\ CPU$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:31.092 2931 INFO nova.compute.claims [req-6a763803-4838-49c7-814e-eaefbaddee9d 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "e87c149278c38c7d",
+      "template": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 <*> 2931 INFO nova.compute.manager [-] [instance: <*> VM Stopped (Lifecycle Event)",
+      "regex": "^nova\\-compute\\.log\\.1\\.2017\\-05\\-16_13:55:31\\ 2017\\-05\\-16\\ (.+?)\\ 2931\\ INFO\\ nova\\.compute\\.manager\\ \\[\\-\\]\\ \\[instance:\\ (.+?)\\ VM\\ Stopped\\ \\(Lifecycle\\ Event\\)$",
+      "roles": [],
+      "sample_count": 21,
+      "sample_line": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:32.974 2931 INFO nova.compute.manager [-] [instance: b9000564-fe1a-409b-b8cc-1e88b294cd1d] VM Stopped (Lifecycle Event)",
+      "learned_from_source": "21_openstack_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "0dac869c4b52f672",
+      "template": "03-17 <*> 1702 <*> I NotificationManager: cancelNotificationWithTag pid 28601 uid = 10111 tag = null pkg =com.tencent.mobileqq id <*>",
+      "regex": "^03\\-17\\ (.+?)\\ 1702\\ (.+?)\\ I\\ NotificationManager:\\ cancelNotificationWithTag\\ pid\\ 28601\\ uid\\ =\\ 10111\\ tag\\ =\\ null\\ pkg\\ =com\\.tencent\\.mobileqq\\ id\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "03-17 16:13:47.578  1702  8671 I NotificationManager: cancelNotificationWithTag pid 28601,uid = 10111,tag = null,pkg =com.tencent.mobileqq,id =121",
+      "learned_from_source": "11_android_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "08a679ddfca68ef9",
+      "template": "<*> <*> 13 INFO dfs.DataBlockScanner: Verification succeeded for <*>",
+      "regex": "^(.+?)\\ (.+?)\\ 13\\ INFO\\ dfs\\.DataBlockScanner:\\ Verification\\ succeeded\\ for\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "081109 205931 13 INFO dfs.DataBlockScanner: Verification succeeded for blk_-4980916519894289629",
+      "learned_from_source": "15_hdfs_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "60e0189c8180c8bb",
+      "template": "Jul <*> <*> <*> <*> CCFile::captureLog Received Capture notice id: <*> reason = <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ CCFile::captureLog\\ Received\\ Capture\\ notice\\ id:\\ (.+?)\\ reason\\ =\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "Jul  1 10:08:21 authorMacBook-Pro corecaptured[31313]: CCFile::captureLog Received Capture notice id: 1498928900.759059, reason = AuthFail:sts:5_rsn:0",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "ae822ee65955a53c",
+      "template": "Jul <*> <*> <*> kernel[0]: IO80211AWDLPeerManager::setAwdlOperatingMode Setting the AWDL operation mode from <*> to <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ kernel\\[0\\]:\\ IO80211AWDLPeerManager::setAwdlOperatingMode\\ Setting\\ the\\ AWDL\\ operation\\ mode\\ from\\ (.+?)\\ to\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "Jul  1 10:08:49 calvisitor-10-105-160-95 kernel[0]: IO80211AWDLPeerManager::setAwdlOperatingMode Setting the AWDL operation mode from AUTO to SUSPENDED",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "2a0cd98be869519c",
+      "template": "Jul <*> <*> <*> QQ[10018]: button report: <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ QQ\\[10018\\]:\\ button\\ report:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "Jul  1 10:46:48 calvisitor-10-105-160-95 QQ[10018]: button report: 0x8002be0",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "db789e6c777dafac",
+      "template": "Jul <*> <*> <*> iconservicesagent[328]: -[ISGenerateImageOp generateImageWithCompletion:] Failed to composit image for descriptor <ISBindingImageDescriptor: <*>",
+      "regex": "^Jul\\ (.+?)\\ (.+?)\\ (.+?)\\ iconservicesagent\\[328\\]:\\ \\-\\[ISGenerateImageOp\\ generateImageWithCompletion:\\]\\ Failed\\ to\\ composit\\ image\\ for\\ descriptor\\ <ISBindingImageDescriptor:\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "Jul  1 19:46:42 calvisitor-10-105-163-202 iconservicesagent[328]: -[ISGenerateImageOp generateImageWithCompletion:] Failed to composit image for descriptor <ISBindingImageDescriptor: 0x7f9950712080>.",
+      "learned_from_source": "19_mac_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "fdfc3bca49a1a7a0",
+      "template": "<*> <*> <*> - <*> error : Could not connect to proxy proxy.cse.cuhk.edu.hk:5070 - <*> <*> <*> <*> error <*>",
+      "regex": "^(.+?)\\ (.+?)\\ (.+?)\\ \\-\\ (.+?)\\ error\\ :\\ Could\\ not\\ connect\\ to\\ proxy\\ proxy\\.cse\\.cuhk\\.edu\\.hk:5070\\ \\-\\ (.+?)\\ (.+?)\\ (.+?)\\ (.+?)\\ error\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "[07.26 17:23:51] WeChat.exe - 223.167.104.147:80 error : Could not connect to proxy proxy.cse.cuhk.edu.hk:5070 - Could not resolve proxy.cse.cuhk.edu.hk error 11001",
+      "learned_from_source": "22_proxifier_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    },
+    {
+      "signature": "c8a313accfb185d4",
+      "template": "- <*> 2005.11.09 tbird-admin1 Nov 9 <*> local@tbird-admin1 <*> <*> <*>",
+      "regex": "^\\-\\ (.+?)\\ 2005\\.11\\.09\\ tbird\\-admin1\\ Nov\\ 9\\ (.+?)\\ local@tbird\\-admin1\\ (.+?)\\ (.+?)\\ (.+?)$",
+      "roles": [],
+      "sample_count": 20,
+      "sample_line": "- 1131567043 2005.11.09 tbird-admin1 Nov 9 12:10:43 local@tbird-admin1 ACPI: Interpreter enabled",
+      "learned_from_source": "24_thunderbird_unknown",
+      "learned_at": "2026-09-26T09:39:05Z"
+    }
+  ]
+}

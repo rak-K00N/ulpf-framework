@@ -4,10 +4,55 @@ that makes it "universal" from the consumer's point of view: no matter
 which of the five(+) source formats an event came from, it leaves here
 looking identical.
 """
+import re
 from datetime import datetime, timezone
 
 from schema import empty_event, normalize_action, normalize_protocol, to_int, guess_action_from_text
 from parsers import generic_profiler, kv_syslog
+from timestamp_utils import normalize_timestamp
+
+
+def finalize(event):
+    """Single choke point every normalized event passes through: converts
+    whatever normalize_timestamp() ends up with in event['timestamp']
+    into one consistent ISO-8601 UTC shape (see timestamp_utils.py for
+    why this matters for Elasticsearch/Kibana). Called once, right
+    before an event leaves pipeline.process_line / process_file /
+    bigfile_chunking -- not duplicated inside every normalize_* function."""
+    event["timestamp"] = normalize_timestamp(event.get("timestamp"))
+    return event
+
+# Independent, direct scan of the raw line for IPv4 addresses -- NOT
+# derived from Drain's tagged variables. Drain only tags a token as a
+# "variable" if it varies across the lines it has clustered together so
+# far; an IP address that happens to look constant within the current
+# cluster window (e.g. many early requests from the same client) gets
+# baked into the fixed "template" instead and is then invisible to the
+# ip_vars extraction below. That's a real, observed failure mode (see
+# the OpenStack sample: 10.11.10.1 sits in plain text in the raw line
+# but never appears as a Drain variable), not a hypothetical one. This
+# regex scan is a second, independent source of the same signal that
+# doesn't depend on Drain's clustering state, used whenever Drain's own
+# variable list didn't already find an IP.
+_IPV4_FINDALL = re.compile(r"\b(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\b")
+
+# HTTP/access-log-style "key: value" (colon then whitespace) fields, as
+# distinct from "key=value" (handled by kv_syslog) and from host:port /
+# timestamp colons (which never have whitespace right after the colon,
+# so this pattern doesn't match them). Covers exactly the OpenStack-style
+# "status: 200 len: 1893 time: 0.24" case, where a real byte count sits
+# in the line and was previously discarded entirely.
+_COLON_KV = re.compile(r"\b([A-Za-z_]\w*):\s+(\S+)")
+
+
+def _find_ips_in_text(text):
+    """Ordered, de-duplicated list of IPv4 addresses found anywhere in
+    the raw line, independent of Drain's variable tagging."""
+    seen = []
+    for ip in _IPV4_FINDALL.findall(text):
+        if ip not in seen:
+            seen.append(ip)
+    return seen
 
 
 def epoch_to_iso(epoch_value):
@@ -40,7 +85,11 @@ def normalize_kv_fortinet(fields, raw_line, lineage=None):
 
 def normalize_cef(fields, raw_line, lineage=None):
     event = empty_event(raw_line, "cef", lineage)
-    event["timestamp"] = fields.get("syslog_prefix")
+    # syslog_prefix is "<timestamp> <hostname>" as one unparsed string
+    # (see cef.py) -- extracting just the timestamp shape out of it,
+    # rather than assigning the whole prefix, is what timestamp_utils
+    # needs to actually recognize and normalize it.
+    event["timestamp"] = generic_profiler.extract_timestamp(fields.get("syslog_prefix") or "")
     event["vendor"] = fields.get("vendor", "").lower() or "unknown"
     event["event_type"] = fields.get("cat")
     event["action"] = normalize_action(fields.get("act"))
@@ -59,7 +108,8 @@ def normalize_cef(fields, raw_line, lineage=None):
 
 def normalize_leef(fields, raw_line, lineage=None):
     event = empty_event(raw_line, "leef", lineage)
-    event["timestamp"] = fields.get("devTime") or fields.get("syslog_prefix")
+    event["timestamp"] = (fields.get("devTime")
+                           or generic_profiler.extract_timestamp(fields.get("syslog_prefix") or ""))
     event["vendor"] = (fields.get("vendor") or "").lower() or "unknown"
     event["event_type"] = fields.get("cat")
     event["action"] = normalize_action(fields.get("act") or fields.get("event_id"))
@@ -179,6 +229,12 @@ def normalize_drain(drain_result, raw_line, lineage=None):
     """
     event = empty_event(raw_line, "unknown", lineage)
     event["message"] = drain_result["template"]
+    # Was silently left null on every single unknown-format event before
+    # this fix -- there's no vendor to report for a genuinely unrecognized
+    # format, but "unknown" (matching source_format) is honest and lets
+    # a SIEM query/filter on it, instead of every unknown-format row
+    # looking identical to a field that was never populated at all.
+    event["vendor"] = "unknown"
 
     profile = generic_profiler.profile_line(raw_line)
     kv_fields = kv_syslog.parse_line(raw_line)
@@ -256,6 +312,18 @@ def normalize_drain(drain_result, raw_line, lineage=None):
     src_ip = ip_from_kv or src_ip or (ip_vars[0] if ip_vars else None)
     dst_ip = dst_from_kv or dst_ip or (ip_vars[1] if len(ip_vars) >= 2 else
                                         (ip_vars[0] if ip_vars and ip_from_kv else None))
+
+    if not src_ip:
+        # Drain never tagged an IP as a variable for this line (see the
+        # module-level comment on _find_ips_in_text) -- fall back to
+        # scanning the raw text directly rather than leaving a real IP
+        # sitting unrecognized in plain sight.
+        raw_ips = _find_ips_in_text(raw_line)
+        if raw_ips:
+            src_ip = raw_ips[0]
+            if len(raw_ips) >= 2 and not dst_ip:
+                dst_ip = raw_ips[1]
+
     if src_ip:
         event["src_ip"] = src_ip
         event["src_port"] = to_int(src_port)
@@ -277,6 +345,28 @@ def normalize_drain(drain_result, raw_line, lineage=None):
     # otherwise fall back to scanning the free-text template for one.
     event["action"] = guess_action_from_text(drain_result["template"])
     event["event_type"] = "traffic" if event["src_ip"] else "unclassified"
+
+    # Real byte/packet/protocol counts embedded in free text as
+    # "key: value" (HTTP/access-log style: "status: 200 len: 1893") were
+    # previously discarded entirely -- kv_syslog only understands
+    # "key=value". This is a second, independent harvesting pass over
+    # the same raw line for that colon-space style specifically.
+    colon_fields = {k.lower(): v for k, v in _COLON_KV.findall(raw_line)}
+    bytes_val = (kv_fields.get("bytes_received") or kv_fields.get("rcvd")
+                 or kv_fields.get("received") or colon_fields.get("len")
+                 or colon_fields.get("bytes"))
+    if bytes_val and event["bytes_received"] is None:
+        event["bytes_received"] = to_int(bytes_val)
+        if event["bytes_received"] is not None:
+            confidence += 0.05
+
+    packets_val = kv_fields.get("packets") or kv_fields.get("pkts") or colon_fields.get("packets")
+    if packets_val and event["packets"] is None:
+        event["packets"] = to_int(packets_val)
+
+    proto_val = kv_fields.get("proto") or kv_fields.get("protocol") or colon_fields.get("proto")
+    if proto_val and not event["protocol"]:
+        event["protocol"] = normalize_protocol(proto_val)
 
     event["confidence"] = round(min(confidence, 0.75), 2)
     return event

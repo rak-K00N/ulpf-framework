@@ -1,294 +1,309 @@
-# Universal Log Parsing Prototype (offline, air-gapped, no LLM)
+# ULPF — Universal Log Parsing Framework
 
-A working prototype of a format-agnostic log ingestion pipeline. It parses
-**nine** self-describing/coded formats through dedicated shape extractors,
-plus **fifteen** additional real-world formats it has never seen before
-through a single statistical fallback path -- all without writing a
-parser per source, and without any network calls at any point.
+**Offline. Air-gapped. Zero LLM calls. Feeds straight into Elastic or Splunk.**
+
+A format-agnostic log ingestion pipeline that normalizes wildly different log
+sources — firewalls, cloud flow logs, supercomputer logs, Android
+logcat — into one common schema, without writing a parser per vendor. Nine
+shapes are recognized directly; anything else falls through to a
+statistical fallback that has never seen the format before and still parses
+it, with zero source-specific code. Formats it learns are remembered
+permanently and can be carried to another air-gapped machine as a single
+JSON file.
+
+![offline](https://img.shields.io/badge/network%20calls-zero-2DD4BF)
+![python](https://img.shields.io/badge/python-3.10%2B-60A5FA)
+![formats](https://img.shields.io/badge/recognized%20shapes-9-A78BFA)
+![tests](https://img.shields.io/badge/sample%20corpus-25%2F25%20passing-2DD4BF)
+
+---
+
+## Contents
+
+- [Why this exists](#why-this-exists)
+- [How it works](#how-it-works)
+- [A single log line's journey](#a-single-log-lines-journey)
+- [Self-writing parser codebooks](#self-writing-parser-codebooks)
+- [Scaling to GB-size input](#scaling-to-gb-size-input)
+- [Running it](#running-it)
+- [Output files](#output-files)
+- [Requirements checklist](#requirements-checklist)
+- [Project structure](#project-structure)
+- [Known limitations](#known-limitations)
+
+---
 
 ## Why this exists
 
 Every log source encodes roughly the same information (source/destination
-IP, port, protocol, action) in a different syntax. Instead of writing a
-"Fortinet parser," a "Cisco parser," an "AWS parser," this project parses
-by **shape** (JSON / CSV / key=value / CEF / LEEF / RFC 5424 structured
-syslog / coded syslog) and normalizes every result into one common
-schema. New vendors that happen to emit an already-supported shape need
-**zero new code** -- and sources that match *none* of those shapes still
-get parsed, via Drain-based template mining plus generic field tagging,
-again with **zero new code**.
+IP, port, protocol, action, timestamp) in a different syntax. The usual
+answer to that is writing a parser per vendor — a Fortinet parser, a Cisco
+parser, an AWS parser — which means every new source is a standing
+engineering task, forever, repeated per SIEM you own.
 
-## Architecture
+This project parses by **shape** instead: JSON, CSV, key=value, CEF, LEEF,
+RFC 5424 structured syslog, and vendor-coded syslog are each handled by one
+shape extractor that doesn't care which vendor emits it. A new vendor that
+happens to emit an already-supported shape needs **zero new code**. A
+source that matches *none* of those shapes still gets parsed — via
+statistical template mining, not a hand-written pattern — and once that
+shape has been seen enough times, it's promoted into a permanent,
+inspectable parser of its own.
 
+Everything runs with no network access at any point, which is the actual
+requirement for air-gapped SOC/defense environments this was built for —
+not a stylistic choice.
+
+## How it works
+
+```mermaid
+flowchart TD
+    A["Log file<br/>(plain or gzip, detected by magic bytes)"] --> B["sniffer.py<br/>detects shape from the first few lines"]
+
+    B -->|"json / csv / kv_syslog / cef /<br/>leef / syslog5424 / coded_syslog"| C["Shape-specific parser<br/>(parsers/*.py)"]
+    B -->|"unknown shape"| D{"Codebook match?<br/>(learned_codebooks/*.json)"}
+
+    D -->|"yes: seen &amp; promoted before"| E["Fast regex match<br/>(no clustering needed)"]
+    D -->|"no: genuinely new"| F["Drain3 template mining<br/>(parsers/drain_fallback.py)"]
+
+    C --> G["normalizer.py<br/>maps every path into one common schema"]
+    E --> G
+    F --> G
+
+    G --> H["Normalized event<br/>(schema.py) + confidence score +<br/>lineage (source, line #, event_id)"]
+
+    H --> I["output/ writers"]
+    I --> I1["all_events.jsonl"]
+    I --> I2["elastic_bulk.ndjson + elastic_docs.ndjson<br/>+ elasticsearch_mapping.json"]
+    I --> I3["events.parquet"]
+    I --> I4["dashboard.html"]
+
+    F -.->|"cluster seen 20+ times:<br/>promote"| J["learned_codebooks/learned_codebook.json"]
+    J -.->|"loaded on startup"| D
 ```
-raw log file (plain or gzip-compressed, detected by magic bytes)
-     |
-     v
-sniffer.py            <- detects shape: json / csv / kv_syslog / cef /
-     |                     leef / syslog5424 / coded_syslog / unknown
-     v
-     +-- known shape ------------------------+
-     |                                       |
-     v                                       v
-parsers/*.py                        parsers/drain_fallback.py
- - json_flow.py                      (Drain3 template mining: clusters
- - csv_parser.py                      lines by structural similarity,
- - kv_syslog.py                       splits each into a fixed template +
- - cef.py / leef.py                   variable tokens -- one miner per
- - syslog5424.py                      SOURCE so unrelated formats never
- - coded_syslog.py + codebooks/*.json  share cluster space)
-   (only place needing vendor                  |
-    knowledge, as DATA not code)                v
-                                     parsers/generic_profiler.py
-                                      (line-level shape tagging: which of
-                                       ~10 published timestamp styles,
-                                       which log-level word, RFC 3164
-                                       hostname/process/pid position --
-                                       plus kv_syslog reused to harvest
-                                       any embedded key=value fragments)
-     |                                       |
-     +-------------------+-------------------+
-                         v
-              normalizer.py  <- maps every path's output into one common schema
-                         v
-              normalized event (schema.py) + confidence score
+
+Two families of "known knowledge" feed into this, both stored as plain JSON
+data rather than code:
+
+- **`codebooks/*.json`** — hand-curated vendor message-code tables (e.g.
+  Cisco ASA's `%ASA-4-106023`, Cisco Firepower's `%FTD-6-430001`). Adding a
+  new coded-syslog vendor means adding a JSON file, not new Python.
+- **`learned_codebooks/*.json`** — auto-generated by the pipeline itself
+  from stable Drain clusters. See [Self-writing parser
+  codebooks](#self-writing-parser-codebooks) below.
+
+## A single log line's journey
+
+```mermaid
+sequenceDiagram
+    participant File as Log file
+    participant Sniffer as sniffer.py
+    participant Parser as Shape parser<br/>or Drain fallback
+    participant Norm as normalizer.py
+    participant Time as timestamp_utils.py
+    participant Out as output/ writers
+
+    File->>Sniffer: raw line(s)
+    Sniffer->>Sniffer: check first 5 lines against<br/>known shapes
+    Sniffer-->>Parser: detected format (e.g. "kv_syslog")
+    Parser->>Parser: extract fields by shape
+    Parser-->>Norm: raw fields + raw line
+    Norm->>Time: raw timestamp string<br/>(any of 16+ shapes)
+    Time-->>Norm: one consistent ISO-8601 UTC string
+    Norm->>Norm: build schema.py event +<br/>confidence score + lineage
+    Norm-->>Out: normalized event
+    Out->>Out: JSONL, Elastic bulk + docs NDJSON,<br/>Parquet, dashboard aggregation
 ```
 
-## Why no LLM
+The timestamp step matters more than it looks: the 25-source sample corpus
+alone produces 16+ genuinely different raw timestamp shapes (`Aug 31
+09:12:03`, `081109 203615`, `[10.30 16:49:06]`, bare epoch integers, ISO
+with comma-decimal milliseconds...). Elasticsearch/Kibana can only build a
+date histogram or a "last 24 hours" panel off a field that parses under one
+consistent format — `timestamp_utils.py` is what makes every one of those
+shapes land as the same strict ISO-8601 UTC value before an event ever
+leaves the pipeline, including correct year-inference for the year-less
+BSD-syslog shapes (assumes the most recent occurrence of that month/day
+that isn't in the future).
 
-This is designed for air-gapped environments (typical for firewall/SOC
-log processing). Every stage above runs with zero network access:
+## Self-writing parser codebooks
 
-- 6 of 9 recognized formats are **self-describing** (JSON keys, CSV
-  headers, CEF/LEEF's published specs, RFC 5424 structured data, generic
-  key=value) -- pure regex/parsing logic, no intelligence needed.
-- Formats needing vendor knowledge (Cisco ASA's and Cisco Firepower's
-  coded syslog messages, e.g. `%ASA-4-106023` / `%FTD-6-430001`) are
-  handled with **codebooks**: vendors publish a stable message-ID ->
-  template mapping, stored here as plain JSON files. Adding a new
-  coded-syslog vendor means adding a JSON file, not new Python.
-- Everything else -- genuinely unrecognized shapes -- falls back to
-  **Drain** (via the `drain3` library), a well-published, pre-LLM
-  algorithm for automatically splitting log lines into a fixed
-  "template" and variable tokens using pure statistics over repeated
-  structure, plus a **generic heuristic field-type tagger**
-  (`parsers/generic_profiler.py`) that recognizes ~10 widely-published
-  timestamp shapes, standard log-level words, and the RFC 3164
-  hostname/process/pid TAG field -- all shape rules, none of them
-  vendor-specific.
+The Drain3 fallback re-clusters every unrecognized line from scratch, every
+run — the same cost the rest of the industry pays too, just paid
+differently: Splunk and Elastic don't attempt automatic clustering for a
+genuinely custom source at all; a human hand-writes `props.conf` /
+`transforms.conf` regex or an ingest pipeline, once per format, per SIEM.
+Neither approach produces a durable, portable artifact from what's already
+been learned.
 
-## Results on the provided sample corpus
+Once a Drain cluster has been seen enough times to be statistically stable
+(20+ occurrences), it gets **promoted**: a regex plus a per-variable shape
+tag, synthesized directly from the cluster's own template. A promoted
+codebook is one human-readable JSON file — inspectable, editable, never a
+black box — that can be copied to a different air-gapped machine over USB
+and recognizes that format there immediately, with no re-learning:
 
-**Nine recognized shapes** (2,600-2,805 lines each, one held-back 8-line
-edge case): 24,550/24,558 events (99.97%) normalized at 0.90-0.98
-confidence.
+```mermaid
+flowchart LR
+    subgraph M1["Machine A -- first contact with a new format"]
+        A1["Unknown-format lines"] --> A2["Drain3 clusters them<br/>by structural similarity"]
+        A2 --> A3{"Cluster stable?<br/>(seen 20+ times)"}
+        A3 -->|"yes"| A4["Promote: synthesize regex<br/>+ variable shape tags"]
+        A3 -->|"not yet"| A2
+        A4 --> A5["learned_codebook.json<br/>(human-readable, inspectable)"]
+    end
 
-**Fifteen never-seen-before real-world formats** (2,000 lines each, the
-public LogHub benchmark corpus: Android, Apache, BGL, Hadoop, HDFS,
-HealthApp, HPC, Linux, Mac, OpenSSH, OpenStack, Proxifier, Spark,
-Thunderbird, Windows) -- wildly different application, OS, and
-supercomputer logs, none matching any shape this project recognizes:
+    A5 -->|"copy via USB<br/>(air-gapped transfer)"| B1
 
-| Source | Timestamp recovered | Host recovered | Avg confidence |
-|---|---|---|---|
-| Android, Apache, BGL, Hadoop, HDFS, HPC, HealthApp, OpenStack, Proxifier, Spark, Thunderbird, Windows | 100% | n/a (no RFC 3164 hostname field in these shapes) | 0.40-0.49 |
-| Linux, Mac, OpenSSH (RFC 3164 BSD syslog) | 100% | 100% | 0.50-0.58 |
-
-**Every single line across all 25 sources parses -- zero drops, zero
-exceptions -- with no source-specific code written for any of the 15
-unknown ones.** 54,558 total events, 45% at high (shape-recognized)
-confidence, 55% at medium (fallback, field-tagged) confidence, effectively
-none dropped to bare-template-only.
-
-## What was added in this extension pass
-
-**New recognized shapes:**
-1. **LEEF parser** (`parsers/leef.py`) -- IBM's Log Event Extended
-   Format, the native output of Check Point, Juniper, and other
-   perimeter vendors. Handles LEEF 1.0 and 2.0 (incl. hex-escaped
-   delimiters like `x09`).
-2. **RFC 5424 structured syslog parser** (`parsers/syslog5424.py`) --
-   the modern successor to BSD syslog (F5, Juniper, newer Palo Alto).
-   Parses the standard header plus `[sdid key="value"]` blocks.
-3. **Transparent gzip support** (`sniffer.open_maybe_compressed`) --
-   detected by magic bytes, not extension.
-4. **Second coded-syslog vendor** (`codebooks/cisco_firepower.json`,
-   prefix `%FTD`) -- added as pure JSON config, no parser changes,
-   demonstrating "config not code" for a second vendor.
-
-**Unknown-format fallback overhaul (this is the main event):**
-5. **`parsers/generic_profiler.py`** (new) -- the "Heuristic Field-Type
-   Tagging" step from the architecture diagram, as its own module.
-   Recognizes ~10 published timestamp shapes (ISO w/ comma or dot
-   milliseconds, dotted-dash BGL/Thunderbird precision stamps, compact
-   `YYMMDD HHMMSS` HDFS-style, `MM-DD HH:MM:SS.mmm` Android, bracketed
-   Proxifier, RFC 3164 BSD, a last-resort bare-epoch fallback), standard
-   log-level words (`INFO`/`WARN`/`ERROR`/... plus Android's
-   single-letter levels in their specific syntactic position), and the
-   RFC 3164 `hostname` + `process[pid]:` TAG fields -- all as *shape*
-   rules with zero knowledge of which of the 15 sources produced the
-   line.
-6. **Richer token-level tagging in `drain_fallback.py`** -- `_guess_tag`
-   now recognizes IP, IPv6, MAC, UUID, email, URL, filesystem path (Unix
-   and Windows), hex, date, time, and generic numbers, not just IP/port.
-7. **Fixed a correctness bug in the old delimiter pre-processing**: the
-   previous version blanked out `:` and `=` before handing lines to
-   Drain, which silently destroyed every timestamp (`15:16:01` ->
-   `15 16 01`) and every embedded key=value fragment before they could
-   ever be recognized. Only `|` and `,` are normalized now, and real
-   key=value fragments are instead recovered losslessly by reusing
-   `kv_syslog`'s regex extractor directly against the untouched raw line.
-8. **Per-source Drain miners, not one global instance**
-   (`pipeline._get_drain_miner`) -- previously a single shared
-   `TemplateMiner` was used for *every* unrecognized line regardless of
-   source, so an Android logcat line and a BGL supercomputer line would
-   compete for the same template-cluster space. Now each source gets
-   its own miner, keyed by source name, with **optional on-disk
-   persistence** (`drain_state/`) so a source's learned template
-   vocabulary keeps improving across separate runs instead of
-   restarting cold every time.
-9. **Opportunistic key=value harvesting in the fallback path**
-   (`normalizer.normalize_drain`) -- even lines with no recognized
-   overall shape often embed a few real key=value pairs in prose (e.g.
-   Linux's `uid=0 euid=0 rhost=1.2.3.4` inside an auth-failure
-   sentence); these are now harvested via the existing generic
-   `kv_syslog` regex extractor and merged into `user`/`src_ip`/`dst_ip`
-   when present.
-10. **Dynamic fallback confidence** -- previously a flat `0.2` for every
-    unrecognized line regardless of how much was actually recoverable.
-    Now built up from what genuinely fired (timestamp +0.10, severity
-    +0.05, host +0.05, process/pid +0.05, user +0.05, IP +0.10), capped
-    at 0.75 so it's still clearly below shape-recognized confidence, but
-    proportionate to real signal.
-11. **New schema fields** (`schema.py`): `severity`, `host`, `process`,
-    `pid` -- generic enough to serve any log source, always `None` when
-    a shape extractor has nothing to say about them.
-11b. **Two more generic fallback improvements, added while proving out
-    a brand-new format live (a MikroTik-router-style log the project had
-    never seen)**:
-    - a **second-line-of-defense timestamp fallback**: if none of
-      `generic_profiler`'s ~10 known timestamp shapes match, but Drain
-      still isolated a date-shaped or time-shaped *token* purely from
-      its position varying line-to-line, that's now used instead of
-      giving up on timestamp entirely (catches things like a bare
-      `14:22:01` with no date portion).
-    - recognition of **`IP:PORT`** and **`SRC:PORT->DST:PORT`** flow
-      notation as its own shape (`drain_fallback._guess_tag`) -- common
-      across many routers/firewalls (MikroTik, iptables, HAProxy/envoy
-      access logs) but structurally different from a bare IP token, so
-      it needed its own pattern to split correctly into src/dst ip+port
-      rather than being missed entirely.
-12. **Sniffer false-positive fixes**: the CSV heuristic was mistaking
-    Cisco Firepower's comma-heavy message bodies for a CSV header
-    (fixed with shape guards), and the kv_syslog heuristic was
-    mistaking a handful of embedded `uid=0`-style fragments inside
-    ordinary Linux auth-log prose for a genuine key=value log (fixed
-    with a token-ratio threshold: real kv logs are ~100% k=v tokens,
-    not ~30%). Also fixed an onboard_source.py bug where the "already
-    covered by an existing codebook" check guessed the wrong filename
-    and never matched any codebook, including the original Cisco ASA one.
-13. **Regression tests** (`tests/test_pipeline.py`) -- now covers all 25
-    sample sources, asserting detected format, a confidence floor, and
-    correct lineage per file.
-
-## Additional ULPF requirements implemented
-
-**d) Traceability.** `lineage.py` generates a stable `event_id` (a hash
-of source path + line number + raw line, so re-running the pipeline
-never creates duplicate identities) and attaches a `lineage` block to
-every event: source file path, line number, and ingestion timestamp.
-An analyst or auditor can always trace a normalized record back to the
-exact original line it came from.
-
-**e) Plug-and-play onboarding.** `registry.py` auto-records every source
-the pipeline ever sees, tagged with how much work it needed:
-- self-describing shapes (json/csv/kv/cef/leef/syslog5424) -> zero code,
-  auto-registered
-- coded-syslog -> "codebook-driven," just a JSON config
-- unrecognized -> routed through the Drain fallback automatically, no
-  action required
-
-`onboard_source.py` is a CLI a team member runs against a brand-new
-source's sample before wiring it in:
-```bash
-python3 onboard_source.py --sample new_source_sample.log --name my-new-firewall
+    subgraph M2["Machine B -- has never seen this format"]
+        B1["learned_codebook.json"] --> B2["New unknown-format lines"]
+        B2 --> B3{"Matches a<br/>promoted template?"}
+        B3 -->|"yes"| B4["Single regex match --<br/>same accuracy as Machine A's<br/>fully-converged understanding,<br/>from the very first line"]
+        B3 -->|"no: genuinely different"| B5["Falls back to Drain3<br/>clustering, same as Machine A did"]
+    end
 ```
-It tells you immediately whether the source needs zero code (self-
-describing shape), a codebook (and *scaffolds one automatically* with
-every message code it found in the sample, ready to fill in, or tells
-you it's already covered by an existing codebook), or nothing at all --
-truly unrecognized shapes report that Drain's fallback will handle it
-with no action needed, plus a note on how much sample volume helps
-Drain's clustering converge.
 
-**f) Unified visibility.** `dashboard.py` generates one self-contained
-`dashboard.html` -- charts drawn in plain SVG, data embedded inline, no
-external JS library or CDN, no server. Open it in any browser. Stays a
-~15KB file even summarizing 54,000+ events across 25 sources. Shows
-events by action/format/vendor, top source IPs, confidence distribution,
-and a sample event table.
+Verified on the sample corpus: **184 templates promoted** across the 15
+never-seen-before formats, matching against a codebook produces output
+that's either identical to or *more* accurate than a fresh, un-converged
+Drain pass (an early cluster snapshot can misjudge a variable's shape
+before enough examples have been seen; a promoted template reflects the
+fully-converged final understanding from the start). Matching is indexed
+by token count — the same first-level bucketing trick Drain3's own
+tree-search already uses — so a codebook accumulated across many source
+formats doesn't force every line through irrelevant templates.
 
-**g) SIEM / Data Lake integration.** `outputs/` has two adapters:
-- `elastic_bulk.py` writes the exact NDJSON shape Elasticsearch's/
-  OpenSearch's `_bulk` API expects, using `event_id` as the document ID
-  so re-ingestion is idempotent, not duplicating.
-- `parquet_writer.py` writes columnar Parquet (via pyarrow) for data
-  lake platforms (S3 + Athena, Spark, Delta Lake), with the nested
-  `lineage` block flattened into queryable columns.
+## Scaling to GB-size input
 
-Both run fully offline; the output files are meant to be moved into the
-air-gapped boundary's SIEM/lake however your environment allows.
+```mermaid
+flowchart TD
+    Q1{"What does your input<br/>look like?"}
+
+    Q1 -->|"A handful of files,<br/>modest total size"| R1["run_demo.py<br/>(default -- simplest, full report output)"]
+
+    Q1 -->|"Many separate source files,<br/>multi-core machine available"| R2["run_demo_parallel.py<br/>(one worker process per file --<br/>safe because Drain miners are<br/>isolated per source already)"]
+
+    Q1 -->|"One single huge file<br/>(possibly gzip-compressed)"| R3["run_demo_bigfile.py<br/>(splits by byte-aligned line<br/>boundaries, processes chunks<br/>in parallel, merges results)"]
+```
+
+All three share the same underlying pipeline and produce the same output
+shape. The whole pipeline is streaming end to end — `pipeline.process_file`
+is a generator, the dashboard aggregator never materializes a full event
+list, and Parquet is written in fixed-size batches against an explicit
+schema — memory stays flat regardless of input size. Verified: a 641MB /
+2-million-line file that OOM-killed the original buffered approach outright
+processes at a constant ~180MB peak memory with the current streaming
+design.
+
+`run_demo_bigfile.py` additionally handles gzip (decompresses once, since
+you can't seek into an arbitrary byte offset of a compressed stream) and
+CSV (the header row is read once and shared across every chunk, since it's
+the schema, not a repeatable per-chunk artifact).
 
 ## Running it
 
 ```bash
 pip install drain3 pyarrow
+
+# Default: process every file in samples/, print the full report,
+# write output/ (JSONL, Elastic bulk + docs NDJSON, Parquet, dashboard)
 python3 run_demo.py
-```
 
-This processes every file in `samples/` (25 sources, ~54,500 lines,
-including a gzip-compressed one, transparently), prints a per-file
-report plus sections demonstrating traceability and the source registry,
-and writes to `output/`: `all_events.jsonl`, `dashboard.html`,
-`elastic_bulk.ndjson`, and `events.parquet`.
+# Many separate source files, multi-core machine
+python3 run_demo_parallel.py [num_workers]
 
-To onboard a new source before wiring it into the real pipeline:
-```bash
+# One single huge (optionally gzip-compressed) file
+python3 run_demo_bigfile.py /path/to/huge_file.log [num_workers]
+
+# Onboard a brand-new source before wiring it into the real pipeline --
+# tells you immediately whether it needs zero code, a codebook (and
+# scaffolds one automatically), or nothing at all
 python3 onboard_source.py --sample /path/to/sample.log --name my-source
-```
 
-To sanity-check the pipeline after changing a parser, the sniffer, or a
-codebook:
-```bash
+# Regression suite: all 25 sample formats, asserting detected format,
+# a confidence floor, and correct lineage per file
 python3 tests/test_pipeline.py
 ```
 
-## Known simplifications (good to mention if asked)
+## Output files
 
-- CEF/LEEF pipe-escaping (`\|` inside a field) isn't handled -- fine for
+| File | Purpose |
+|---|---|
+| `all_events.jsonl` | Every normalized event, one JSON object per line |
+| `elastic_bulk.ndjson` | Elasticsearch/OpenSearch `_bulk` API format (action + doc line pairs); `event_id` as `_id` makes re-ingestion idempotent |
+| `elastic_docs.ndjson` | Plain one-document-per-line NDJSON, for Kibana's "Upload a file" data visualizer (which rejects the `_bulk` action-line format) |
+| `elasticsearch_mapping.json` | Explicit field types (`date`, `ip`, `keyword`, `integer`, `float`) — without this, dynamic mapping guesses, and a `text`-typed field like `action` can't be aggregated into a chart |
+| `events.parquet` | Columnar output for data-lake platforms (S3 + Athena, Spark, Delta Lake), lineage flattened into queryable columns |
+| `dashboard.html` | Self-contained visibility dashboard — inline SVG charts, searchable/sortable event table, dark/light theme, zero external dependencies |
+| `learned_codebooks/learned_codebook.json` | Promoted parser templates — durable across runs, portable across machines |
+
+## Requirements checklist
+
+| # | Requirement | Where |
+|---|---|---|
+| a-c | Format-agnostic parsing, zero-code onboarding for known shapes, statistical fallback for unknown ones | `sniffer.py`, `parsers/*.py`, `parsers/drain_fallback.py` |
+| d | **Traceability** — every event traces back to its exact source line | `lineage.py`: stable `event_id` (hash of source path + line number + raw line), full `lineage` block on every event |
+| e | **Plug-and-play onboarding** | `registry.py` auto-records every source seen; `onboard_source.py` is a CLI to check a new source before wiring it in |
+| f | **Unified visibility** | `dashboard.py` — one self-contained HTML file, no server, no external dependency |
+| g | **SIEM / data lake integration** | `outputs/` — Elasticsearch bulk + plain-doc NDJSON + explicit mapping, Parquet |
+| h | **Self-writing parser codebooks** (this project's differentiator vs. Splunk CIM / Elastic ECS, both of which require hand-written per-format parsers) | `codebook.py`, `learned_codebooks/` |
+
+## Project structure
+
+```
+universal_log_parser/
+├── run_demo.py                  # default entry point
+├── run_demo_parallel.py         # many files, multi-core
+├── run_demo_bigfile.py          # one huge file, chunked + parallel
+├── bigfile_chunking.py          # byte-aligned chunk boundary logic
+├── pipeline.py                  # per-source dispatch, Drain miner lifecycle
+├── sniffer.py                   # shape detection
+├── normalizer.py                # every shape -> one common schema
+├── schema.py                    # the common event schema
+├── timestamp_utils.py           # 16+ raw shapes -> one ISO-8601 UTC form
+├── lineage.py                   # event_id + source traceability
+├── registry.py                  # source onboarding history (file-locked)
+├── onboard_source.py            # CLI for vetting a brand-new source
+├── codebook.py                  # self-writing parser codebook engine
+├── dashboard.py                 # HTML dashboard generator
+├── parsers/
+│   ├── json_flow.py / csv_parser.py / kv_syslog.py
+│   ├── cef.py / leef.py / syslog5424.py
+│   ├── coded_syslog.py          # vendor message-code lookup (uses codebooks/)
+│   ├── generic_profiler.py      # shape-level tagging for the fallback path
+│   └── drain_fallback.py        # Drain3 template mining
+├── codebooks/                   # hand-curated vendor message-code tables
+│   ├── cisco_asa.json
+│   └── cisco_firepower.json
+├── learned_codebooks/           # auto-promoted parser templates (generated)
+├── outputs/
+│   ├── elastic_bulk.py / elasticsearch_mapping.py / parquet_writer.py
+├── tests/
+│   └── test_pipeline.py
+└── samples/                     # 25-source demo corpus
+```
+
+## Known limitations
+
+- CEF/LEEF pipe-escaping (`\|` inside a field) isn't handled — fine for
   this corpus, would need a stricter tokenizer for production use.
-- The coded-syslog codebooks only cover the message codes present in
-  each sample file; extending them to full vendor coverage is scraping
-  the vendor's published message reference into more JSON entries, not
-  new parsing logic.
-- Fallback-path `user`/`host`/IP fields are best-effort: they come from
-  generic shape rules (RFC 3164 field position, common k=v key aliases),
-  not from knowing what any given source's fields actually mean. A field
-  like `user: "0"` recovered from `uid=0` in a line with no separate
-  username is technically the uid, not a username -- correctly low
-  confidence, and the raw line is always kept alongside it so nothing is
-  silently misrepresented.
-- Drain state persistence (`drain_state/`) is a simple per-source JSON
-  snapshot on local disk; for genuinely distributed/multi-node ingestion
-  at Big-Data volume, this would need to move to a shared store.
-- Gzip support covers whole-file compression detected by magic bytes;
-  it does not (yet) handle multi-stream/concatenated gzip archives or
-  other compression schemes (zstd, bzip2).
-
-## Stretch idea (not built here)
-
-An optional LLM step could sit *after* Drain, only to *label* what a
-variable token semantically means when heuristics are unsure (e.g. "is
-this a device name or a username") -- generated once per template and
-cached, never in the per-line hot path. Deliberately left out here to
-keep the whole system air-gapped end to end.
+- Coded-syslog codebooks only cover the message codes present in each
+  sample file; extending them to full vendor coverage means adding more
+  JSON entries from the vendor's published message reference, not new
+  parsing logic.
+- Fallback-path `user`/`host`/IP fields are best-effort — recovered from
+  generic shape rules, not from knowing what a given source's fields
+  actually mean. The raw line is always kept alongside the normalized
+  fields so nothing is silently misrepresented.
+- BGL/Thunderbird's date-only timestamp field normalizes to day-level
+  granularity (`T00:00:00Z`), not second-level — the fuller sub-second
+  timestamp those sources also carry is a separate token not currently
+  extracted.
+- Gzip support covers whole-file compression detected by magic bytes; it
+  doesn't (yet) handle multi-stream/concatenated gzip archives, zstd, or
+  bzip2.
+- Each Drain miner instance is single-process; a promoted codebook's
+  variable-role inference is a heuristic (shape + position), not a
+  guarantee — every entry is meant to be reviewed before being trusted in
+  a production deployment, which is why the format is plain inspectable
+  JSON rather than a compiled/opaque artifact.

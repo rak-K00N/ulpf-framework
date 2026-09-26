@@ -117,17 +117,30 @@ class DrainFallbackParser:
     restarting cold every time (see `persistence_path`).
     """
 
-    def __init__(self, persistence_path=None):
+    def __init__(self, persistence_path=None, codebook=None):
         config = TemplateMinerConfig()
         persistence = None
         if persistence_path:
             from drain3.file_persistence import FilePersistence
             persistence = FilePersistence(persistence_path)
         self.miner = TemplateMiner(persistence_handler=persistence, config=config)
+        # A promoted codebook (see codebook.py), checked before the
+        # statistical miner on every line. One real example line per
+        # cluster is kept here (not every line -- just the first) so a
+        # later promotion pass can infer variable roles from a real
+        # sample without needing to re-scan the source file.
+        self.codebook = codebook
+        self.examples_by_cluster = {}
 
     def parse_line(self, line):
         original = line.strip()
         drain_input = _normalize_delimiters(original)
+
+        if self.codebook is not None:
+            hit = self.codebook.match(original, _normalize_delimiters)
+            if hit is not None:
+                return hit
+
         result = self.miner.add_log_message(drain_input)
         template = result["template_mined"]
         cluster_id = result["cluster_id"]
@@ -136,9 +149,13 @@ class DrainFallbackParser:
         variables = [p.value for p in params]
         tagged = [_tag_variable(v) for v in variables]
 
+        if cluster_id not in self.examples_by_cluster:
+            self.examples_by_cluster[cluster_id] = (original, tagged)
+
         return {
             "template": template,
             "cluster_id": cluster_id,
             "variables": tagged,
             "cluster_size": result.get("cluster_size"),
+            "matched_learned_template": False,
         }

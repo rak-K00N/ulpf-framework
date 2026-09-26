@@ -15,7 +15,17 @@ import json
 import os
 from datetime import datetime, timezone
 
+try:
+    import fcntl
+    _HAVE_FCNTL = True
+except ImportError:
+    # Windows has no fcntl. Registry updates are only ever called from
+    # single-process pipeline runs there, so this is a documented gap,
+    # not a silent one -- see the comment on record_source_seen below.
+    _HAVE_FCNTL = False
+
 _REGISTRY_PATH = os.path.join(os.path.dirname(__file__), "registry_state.json")
+_LOCK_PATH = _REGISTRY_PATH + ".lock"
 
 
 def _load():
@@ -31,7 +41,33 @@ def _save(state):
 
 
 def record_source_seen(source_name, filepath, detected_format):
-    """Called automatically by the pipeline every time a file is processed."""
+    """
+    Called automatically by the pipeline every time a file is processed.
+
+    This is a read-modify-write on one shared JSON file. Fine as long as
+    only one process ever calls it -- which was true until
+    run_demo_parallel.py started running one worker process per source
+    file. Concurrent load()+save() from two workers can interleave and
+    corrupt registry_state.json (each worker's save() overwrites the
+    other's, or a save() lands mid-read for another). An flock() around
+    the whole read-modify-write serializes registry updates across
+    processes -- worker parsing stays fully parallel (that's the
+    expensive part); only this small, infrequent bookkeeping write is
+    now single-file-at-a-time, which costs nothing measurable.
+    """
+    if not _HAVE_FCNTL:
+        return _record_source_seen_unlocked(source_name, filepath, detected_format)
+
+    lock_f = open(_LOCK_PATH, "w")
+    try:
+        fcntl.flock(lock_f, fcntl.LOCK_EX)
+        return _record_source_seen_unlocked(source_name, filepath, detected_format)
+    finally:
+        fcntl.flock(lock_f, fcntl.LOCK_UN)
+        lock_f.close()
+
+
+def _record_source_seen_unlocked(source_name, filepath, detected_format):
     state = _load()
     now = datetime.now(timezone.utc).isoformat()
 
